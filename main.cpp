@@ -63,7 +63,7 @@ glm::mat4 getMVPMatrix(Shape *shape) {
     // (Change values)
 
     // [-1,1] -> [0,SIZE] mapping
-    glm::mat4 Projection = glm::ortho(0.0f, 100.0f, 0.0f, 100.0f);
+    glm::mat4 Projection = glm::ortho(0.0f, (float) WIN_WIDTH, (float) WIN_HEIGHT, 0.0f);
 
     // Transformations
     glm::mat4 Model = glm::mat4(1.0);
