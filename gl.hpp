@@ -1,5 +1,5 @@
-#ifndef __DRAW_H__
-#define __DRAW_H__
+#ifndef FLAPPYGL_DRAW_H
+#define FLAPPYGL_DRAW_H
 
 #include <GL/glew.h>
 

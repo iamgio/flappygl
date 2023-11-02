@@ -1,5 +1,5 @@
-#ifndef __WINDOW_H__
-#define __WINDOW_H__
+#ifndef FLAPPYGL_WINDOW_H
+#define FLAPPYGL_WINDOW_H
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

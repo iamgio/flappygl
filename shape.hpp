@@ -12,6 +12,8 @@ typedef struct {
     int trianglesAmount;
     std::vector<glm::vec3> vertices;
     std::vector<glm::vec3> colors;
+    glm::vec3 translation;
+    glm::vec3 scale;
 } Shape;
 
 #endif
