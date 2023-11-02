@@ -10,7 +10,6 @@ static Shape generateRotation(float cx, float cy, int numTriangles, float *data,
 
     shape.verticesAmount = numVertices;
     shape.trianglesAmount = numTriangles;
-    shape.model = glm::mat4(1.0f);
 
     float step = 2 * PI / numTriangles; // angolo interno
 

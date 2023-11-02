@@ -4,9 +4,6 @@
 #include <iostream>
 #include "shaders.hpp"
 #include "shapes.hpp"
-#include "colors.hpp"
-
-// Based on http://www.opengl-tutorial.org/beginners-tutorials/
 
 #define WIN_WIDTH 700
 #define WIN_HEIGHT 700
@@ -69,7 +66,7 @@ glm::mat4 getMVPMatrix(Shape *shape) {
     glm::mat4 Projection = glm::ortho(0.0f, 100.0f, 0.0f, 100.0f);
 
     // Transformations
-    glm::mat4 Model = shape->model;
+    glm::mat4 Model = glm::mat4(1.0);
     Model = glm::translate(Model, glm::vec3(50.0f,50.0f,0));
     Model = glm::scale(Model, glm::vec3(100.0f, 100.0f, 1.0f));
 
