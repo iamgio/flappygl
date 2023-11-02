@@ -17,6 +17,11 @@ link_directories(${LIB_PATH}/glm/0.9.9.8/lib)
 find_library(GL_LIB opengl)
 add_definitions(-DGLEW_STATIC)
 
-add_executable(${PROJECT_NAME} main.cpp shaders.cpp shaders.hpp shapes.hpp shapes.cpp shape.hpp)
+add_executable(${PROJECT_NAME} main.cpp
+        shaders.hpp shaders.cpp
+        shapes.hpp shapes.cpp
+        shape.hpp
+        gl.hpp gl.cpp
+        window.hpp window.cpp)
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})
