@@ -7,8 +7,8 @@
 #include "gl.hpp"
 #include "window.hpp"
 
-#define WIN_WIDTH 700
-#define WIN_HEIGHT 700
+#define WIN_WIDTH 1100
+#define WIN_HEIGHT 600
 
 void logVersionInfo() {
     const GLubyte *renderer = glGetString(GL_RENDERER);
