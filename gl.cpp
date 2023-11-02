@@ -1,4 +1,10 @@
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include "gl.hpp"
+
+void backgroundColor(float r, float g, float b) {
+    glClearColor(r, g, b, 1.0f);
+}
 
 void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount) {
     // 1st attribute buffer : vertices
@@ -50,4 +56,10 @@ GLuint newBuffer(const void *data, GLsizeiptr size) {
     glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 
     return buffer;
+}
+
+void updateMVP(glm::mat4 mvp, GLint mvpUniformID) {
+    // Send our transformation to the currently bound shader, in the "MVP" uniform
+    // This is done in the main loop since each model will have a different MVP matrix (At least for the M part)
+    glUniformMatrix4fv(mvpUniformID, 1, GL_FALSE, &mvp[0][0]);
 }

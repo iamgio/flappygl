@@ -22,7 +22,11 @@ add_executable(${PROJECT_NAME} main.cpp
         shapes.hpp shapes.cpp
         shape.hpp
         gl.hpp gl.cpp
+        mvp.h mvp.cpp
         window.hpp window.cpp
-        glm.hpp)
+        glm.hpp
+        scene/scene.h scene/scene.cpp
+        game/game.h game/game.cpp
+)
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})
