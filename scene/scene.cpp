@@ -1,4 +1,5 @@
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 #include "scene.h"
 #include "scene_shapes.h"
 #include "../gl.hpp"
@@ -20,19 +21,6 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
 
     this->shapes = std::vector<Shape>();
 
-    // test
-
-    const int numTriangles = 50;
-
-    Shape shape = generateCircle(.0f, .0f, .5f, .5f, numTriangles);
-
-    shape.translation = glm::vec3(50.0f, 200.0f, 0.0f);
-    shape.scale = glm::vec3(100.0f, 100.0f, 1.0f);
-
-    addShape(&shape);
-
-    // test end
-
     backgroundColor(BACKGROUND_COLOR);
 }
 
@@ -53,6 +41,10 @@ void Scene::addShape(Shape *shape) {
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {
+        //if (!shape) continue;
+        //shape->translation = glm::vec3(30.0f, .0f, .0f);
+        //std::cout << shape->translation.x << std::endl;
+        //shape->translation.x = 30.0f;
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
         updateMVP(mvp, this->mvpUniformID);
         ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);

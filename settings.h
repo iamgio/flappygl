@@ -1,2 +1,2 @@
 // Shows bounding box outlines
-#define SHOW_BBOX
+//#define SHOW_BBOX

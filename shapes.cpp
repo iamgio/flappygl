@@ -2,6 +2,38 @@
 #include "shapes.hpp"
 #include "shape.hpp"
 
+Shape generateRectangle(float x, float y, float w, float h,
+                        glm::vec3 topLeftColor, glm::vec3 topRightColor, glm::vec3 bottomLeftColor, glm::vec3 bottomRightColor) {
+    Shape shape = Shape {
+            .verticesAmount = 6,
+            .trianglesAmount = 2,
+            .method = GL_TRIANGLES,
+    };
+
+    glm::vec3 topLeft = glm::vec3(x, y + h, 0);
+    glm::vec3 topRight = glm::vec3(x + w, y + h, 0);
+    glm::vec3 bottomLeft = glm::vec3(x, y, 0);
+    glm::vec3 bottomRight = glm::vec3(x + w, y, 0);
+
+    // Triangle 1
+    shape.vertices.push_back(topLeft);
+    shape.colors.push_back(topLeftColor);
+    shape.vertices.push_back(topRight);
+    shape.colors.push_back(topRightColor);
+    shape.vertices.push_back(bottomLeft);
+    shape.colors.push_back(bottomLeftColor);
+
+    // Triangle 2
+    shape.vertices.push_back(topRight);
+    shape.colors.push_back(topRightColor);
+    shape.vertices.push_back(bottomRight);
+    shape.colors.push_back(bottomRightColor);
+    shape.vertices.push_back(bottomLeft);
+    shape.colors.push_back(bottomLeftColor);
+
+    return shape;
+}
+
 static Shape generateRotation(float cx, float cy, int numTriangles, float *data, float (&x)(float theta, float*), float (&y)(float theta, float*)) {
     Shape shape = Shape {};
 

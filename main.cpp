@@ -9,6 +9,7 @@
 #include "game/game.h"
 #include "scene/scene.h"
 #include "game/ground.h"
+#include "game/bird.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT 600
@@ -67,6 +68,7 @@ int main(int argc, char **argv) {
     game = new Game(scene);
 
     game->addObject(new Ground());
+    game->addObject(new Bird());
 
     do {
         // Applu shaders
@@ -74,6 +76,8 @@ int main(int argc, char **argv) {
 
         // Clear the screen.
         glClear(GL_COLOR_BUFFER_BIT);
+
+        game->update();
 
         //draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount);
         scene->draw();

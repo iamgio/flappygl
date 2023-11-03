@@ -4,6 +4,7 @@
 #include "../shape.hpp"
 #include "scene.h"
 
+Shape createBirdShape(Scene *scene);
 Shape createGroundShape(Scene *scene);
 
 #endif

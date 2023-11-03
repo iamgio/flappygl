@@ -34,6 +34,8 @@ add_executable(${PROJECT_NAME} main.cpp
         collision/boundingbox.h
         scene/bbox.h
         settings.h
+        game/bird.cpp
+        game/bird.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})

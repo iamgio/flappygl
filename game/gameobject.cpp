@@ -22,3 +22,11 @@ BoundingBox *GameObject::getBoundingBox() {
 bool GameObject::isColliding(GameObject *other) {
     return boundingBox->isColliding(x, y, other->getX(), other->getY(), other->getBoundingBox());
 }
+
+Shape *GameObject::getShape() {
+    return &this->shape;
+}
+
+void GameObject::setShape(Shape *shape) {
+    this->shape = *shape;
+}

@@ -11,6 +11,7 @@ private:
     float x;
     float y;
     BoundingBox *boundingBox;
+    Shape shape;
 public:
     GameObject(float x, float y, BoundingBox *boundingBox);
     float getX();
@@ -18,6 +19,9 @@ public:
     BoundingBox *getBoundingBox();
 
     bool isColliding(GameObject *other);
+
+    Shape *getShape();
+    void setShape(Shape *shape);
 
     virtual Shape createShape(Scene *scene) = 0;
 };
