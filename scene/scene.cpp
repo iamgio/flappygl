@@ -31,9 +31,6 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
 
     addShape(&shape);
 
-    Shape ground = createGroundShape(this);
-    addShape(&ground);
-
     // test end
 
     backgroundColor(BACKGROUND_COLOR);

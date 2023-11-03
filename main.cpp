@@ -8,6 +8,7 @@
 #include "window.hpp"
 #include "game/game.h"
 #include "scene/scene.h"
+#include "game/ground.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT 600
@@ -64,6 +65,8 @@ int main(int argc, char **argv) {
 
     scene = new Scene(WIN_WIDTH, WIN_HEIGHT, MatrixID);
     game = new Game(scene);
+
+    game->addObject(new Ground());
 
     do {
         // Applu shaders

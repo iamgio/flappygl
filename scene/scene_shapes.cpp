@@ -1,7 +1,7 @@
 #include "../shape.hpp"
 #include "scene.h"
+#include "../game/ground.h"
 
-#define GROUND_HEIGHT 60
 #define GROUND_COLOR_TOP 0.92f, 0.87f, 0.71f
 #define GROUND_COLOR_BOTTOM 0.56f, 0.81f, 0.3f
 
