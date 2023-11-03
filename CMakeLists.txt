@@ -27,6 +27,7 @@ add_executable(${PROJECT_NAME} main.cpp
         glm.hpp
         scene/scene.h scene/scene.cpp
         game/game.h game/game.cpp
+        scene/scene_shapes.cpp scene/scene_shapes.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})

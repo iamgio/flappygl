@@ -7,12 +7,16 @@
 
 class Scene {
 private:
+    float width;
+    float height;
     std::vector<Shape> shapes;
     GLint mvpUniformID;
 public:
     Scene(float width, float height, GLint mvpUniformID);
-    std::vector<Shape> getShapes();
+    void addShape(Shape *shape);
     void draw();
+    float getWidth();
+    float getHeight();
 };
 
 

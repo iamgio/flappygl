@@ -1,5 +1,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "scene.h"
+#include "scene_shapes.h"
 #include "../gl.hpp"
 #include "../shapes.hpp"
 #include "../mvp.h"
@@ -10,6 +11,8 @@
 static glm::mat4 projection;
 
 Scene::Scene(float width, float height, GLint mvpUniformID) {
+    this->width = width;
+    this->height = height;
     this->mvpUniformID = mvpUniformID;
     // [-1,1] -> [0,SIZE] mapping
     projection = glm::ortho(0.0f, width, height, 0.0f);
@@ -25,20 +28,29 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
     shape.translation = glm::vec3(50.0f, 50.0f, 0.0f);
     shape.scale = glm::vec3(100.0f, 100.0f, 1.0f);
 
-    // Set up Vertex Buffer
-    shape.verticesVbo = newBuffer(&shape.vertices.front(), shape.vertices.size() * sizeof(glm::vec3) * sizeof(GLfloat));
-    // Set up Color Buffer
-    shape.colorsVbo = newBuffer(&shape.colors.front(), shape.colors.size() * sizeof(glm::vec3) * sizeof(GLfloat));
+    addShape(&shape);
 
-    this->shapes.push_back(shape);
+    Shape ground = createGroundShape(this);
+    addShape(&ground);
 
     // test end
 
     backgroundColor(BACKGROUND_COLOR);
 }
 
-std::vector<Shape> Scene::getShapes() {
-    return this->shapes;
+void Scene::addShape(Shape *shape) {
+    const auto vecSize = sizeof(glm::vec3) * sizeof(GLfloat);
+    if (!shape->verticesVbo) {
+        // Set up Vertex Buffer
+        shape->verticesVbo = newBuffer(&shape->vertices.front(), shape->vertices.size() * vecSize);
+    }
+
+    if (!shape->colorsVbo) {
+        // Set up Color Buffer
+        shape->colorsVbo = newBuffer(&shape->colors.front(), shape->colors.size() * vecSize);
+    }
+
+    this->shapes.push_back(*shape);
 }
 
 void Scene::draw() {
@@ -47,4 +59,12 @@ void Scene::draw() {
         updateMVP(mvp, this->mvpUniformID);
         ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount);
     }
+}
+
+float Scene::getWidth() {
+    return this->width;
+}
+
+float Scene::getHeight() {
+    return this->height;
 }
