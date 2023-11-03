@@ -28,6 +28,10 @@ add_executable(${PROJECT_NAME} main.cpp
         scene/scene.h scene/scene.cpp
         game/game.h game/game.cpp
         scene/scene_shapes.cpp scene/scene_shapes.h
+        game/ground.h
+        game/gameobject.cpp game/gameobject.h
+        collision/boundingbox.cpp
+        collision/boundingbox.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})

@@ -62,8 +62,8 @@ int main(int argc, char **argv) {
     // Only during the initialisation
     GLint MatrixID = glGetUniformLocation(shaders, "MVP");
 
-    game = new Game();
     scene = new Scene(WIN_WIDTH, WIN_HEIGHT, MatrixID);
+    game = new Game(scene);
 
     do {
         // Applu shaders
