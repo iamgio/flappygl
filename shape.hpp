@@ -14,6 +14,7 @@ typedef struct {
     std::vector<glm::vec3> colors;
     glm::vec3 translation;
     glm::vec3 scale;
+    GLenum method;
 } Shape;
 
 #endif

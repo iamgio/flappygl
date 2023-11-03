@@ -5,7 +5,7 @@
 
 void backgroundColor(float r, float g, float b);
 
-void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount);
+void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount, GLenum method);
 
 GLuint setupVAO();
 

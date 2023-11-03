@@ -6,10 +6,10 @@ static Shape generateRotation(float cx, float cy, int numTriangles, float *data,
     Shape shape = Shape {};
 
     int numVertices = numTriangles + 2; // vertici + vertice doppione inizio/fine + centro
-    Point *vertices = new Point[numVertices];
 
     shape.verticesAmount = numVertices;
     shape.trianglesAmount = numTriangles;
+    shape.method = GL_TRIANGLE_FAN;
 
     float step = 2 * PI / numTriangles; // angolo interno
 

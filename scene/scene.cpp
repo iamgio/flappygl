@@ -57,7 +57,7 @@ void Scene::draw() {
     for (Shape shape : this->shapes) {
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
         updateMVP(mvp, this->mvpUniformID);
-        ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount);
+        ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
     }
 }
 

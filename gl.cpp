@@ -6,7 +6,7 @@ void backgroundColor(float r, float g, float b) {
     glClearColor(r, g, b, 1.0f);
 }
 
-void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount) {
+void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount, GLenum method) {
     // 1st attribute buffer : vertices
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -32,7 +32,7 @@ void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount) {
     );
 
     // Draw the triangle
-    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount); // Starting from vertex 0; 3 vertices total -> 1 triangle
+    glDrawArrays(method, 0, vertexCount); // Starting from vertex 0; 3 vertices total -> 1 triangle
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);

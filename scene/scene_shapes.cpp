@@ -8,7 +8,8 @@
 Shape createGroundShape(Scene *scene) {
     Shape shape = Shape {
         .verticesAmount = 6,
-        .trianglesAmount = 2
+        .trianglesAmount = 2,
+        .method = GL_TRIANGLES
     };
 
     glm::vec3 topLeft = glm::vec3(0, scene->getHeight() - GROUND_HEIGHT, 0);
