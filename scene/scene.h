@@ -5,12 +5,14 @@
 #include <vector>
 #include "../shape.hpp"
 
+#define MAX_SHAPES 100
+
 class Scene {
 private:
     float width;
     float height;
     int shapeAmount;
-    std::array<Shape, 100> shapes;
+    std::array<Shape, MAX_SHAPES> shapes;
     GLint mvpUniformID;
 public:
     Scene(float width, float height, GLint mvpUniformID);

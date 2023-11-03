@@ -20,7 +20,7 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
     // Y=0 is on the bottom for better usability
     projection = glm::ortho(0.0f, width, 0.0f, height);
 
-    this->shapes = std::array<Shape, 100>();
+    this->shapes = std::array<Shape, MAX_SHAPES>();
 
     backgroundColor(BACKGROUND_COLOR);
 }
