@@ -12,10 +12,10 @@ Shape createGroundShape(Scene *scene) {
         .method = GL_TRIANGLES
     };
 
-    glm::vec3 topLeft = glm::vec3(0, scene->getHeight() - GROUND_HEIGHT, 0);
-    glm::vec3 topRight = glm::vec3(scene->getWidth(), scene->getHeight() - GROUND_HEIGHT, 0);
-    glm::vec3 bottomLeft = glm::vec3(0, scene->getHeight(), 0);
-    glm::vec3 bottomRight = glm::vec3(scene->getWidth(), scene->getHeight(), 0);
+    glm::vec3 topLeft = glm::vec3(0, GROUND_HEIGHT, 0);
+    glm::vec3 topRight = glm::vec3(scene->getWidth(), GROUND_HEIGHT, 0);
+    glm::vec3 bottomLeft = glm::vec3(0, 0, 0);
+    glm::vec3 bottomRight = glm::vec3(scene->getWidth(), 0, 0);
 
     // Triangle 1
     shape.vertices.push_back(topLeft);

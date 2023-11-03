@@ -15,7 +15,8 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
     this->height = height;
     this->mvpUniformID = mvpUniformID;
     // [-1,1] -> [0,SIZE] mapping
-    projection = glm::ortho(0.0f, width, height, 0.0f);
+    // Y=0 is on the bottom for better usability
+    projection = glm::ortho(0.0f, width, 0.0f, height);
 
     this->shapes = std::vector<Shape>();
 
@@ -25,7 +26,7 @@ Scene::Scene(float width, float height, GLint mvpUniformID) {
 
     Shape shape = generateCircle(.0f, .0f, .5f, .5f, numTriangles);
 
-    shape.translation = glm::vec3(50.0f, 50.0f, 0.0f);
+    shape.translation = glm::vec3(50.0f, 200.0f, 0.0f);
     shape.scale = glm::vec3(100.0f, 100.0f, 1.0f);
 
     addShape(&shape);
