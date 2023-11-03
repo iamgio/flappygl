@@ -11,7 +11,7 @@ private:
     float x;
     float y;
     BoundingBox *boundingBox;
-    Shape shape;
+    int shapeIndex; // Index of the shape within the scene
 public:
     GameObject(float x, float y, BoundingBox *boundingBox);
     float getX();
@@ -20,8 +20,8 @@ public:
 
     bool isColliding(GameObject *other);
 
-    Shape *getShape();
-    void setShape(Shape *shape);
+    int getShapeIndex();
+    void setShapeIndex(int index);
 
     virtual Shape createShape(Scene *scene) = 0;
 };

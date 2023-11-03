@@ -9,14 +9,17 @@ class Scene {
 private:
     float width;
     float height;
-    std::vector<Shape> shapes;
+    int shapeAmount;
+    std::array<Shape, 100> shapes;
     GLint mvpUniformID;
 public:
     Scene(float width, float height, GLint mvpUniformID);
-    void addShape(Shape *shape);
+    void addShape(Shape shape);
     void draw();
     float getWidth();
     float getHeight();
+    int getShapesAmount();
+    Shape *getShape(int index);
 };
 
 

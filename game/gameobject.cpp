@@ -23,10 +23,10 @@ bool GameObject::isColliding(GameObject *other) {
     return boundingBox->isColliding(x, y, other->getX(), other->getY(), other->getBoundingBox());
 }
 
-Shape *GameObject::getShape() {
-    return &this->shape;
+int GameObject::getShapeIndex() {
+    return this->shapeIndex;
 }
 
-void GameObject::setShape(Shape *shape) {
-    this->shape = *shape;
+void GameObject::setShapeIndex(int index) {
+    this->shapeIndex = index;
 }

@@ -16,8 +16,9 @@ std::vector<GameObject*> Game::getGameObjects() {
 void Game::addObject(GameObject *object) {
     this->objects.push_back(object);
     Shape shape = object->createShape(this->scene);
-    object->setShape(&shape);
-    this->scene->addShape(&shape);
+    int index = scene->getShapesAmount();
+    object->setShapeIndex(index);
+    this->scene->addShape(shape);
 
 #ifdef SHOW_BBOX
     Shape bbox = createBoundingBoxShape(object);
@@ -27,8 +28,9 @@ void Game::addObject(GameObject *object) {
 
 void Game::update() {
     for (GameObject *object: objects) {
-        //Shape *shape = object->getShape();
-        //shape->translation.x = object->getX();
-        //shape->translation.y = object->getY();
+        int index = object->getShapeIndex();
+        Shape *shape = scene->getShape(index);
+        shape->translation.x = object->getX();
+        shape->translation.y = object->getY();
     }
 }
