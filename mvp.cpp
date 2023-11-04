@@ -10,8 +10,8 @@ glm::mat4 getMVPMatrix(Shape *shape, glm::mat4 projection) {
         model = glm::translate(model, shape->translation);
     }
 
-    // For usability, rotations always happen along the X axis in 2D
-    glm::vec3 rotationAxis = glm::vec3(1, 0, 0);
+    // For usability, rotations always happen along the Z axis in 2D
+    glm::vec3 rotationAxis = glm::vec3(0, 0, 1);
     //if (!isVecEmpty(shape->rotationAxis)) {
     model = glm::rotate(model, shape->rotationAngle, /*shape->*/rotationAxis);
 
