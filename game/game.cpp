@@ -8,10 +8,14 @@
 
 #define PIPE_SPAWN_TICKS 700
 
+// When going past this X coordinate, an object is removed
+#define REMOVE_OBJECTS_X_THRESHOLD -50
+
 // Internal timer
 static int ticks = 0;
 
 static std::queue<GameObject*> toAddQueue;
+static std::queue<GameObject*> toRemoveQueue;
 
 Game::Game(Scene *scene) {
     this->score = 0;
@@ -37,8 +41,22 @@ void Game::addDequeuedObject() {
 #endif
 }
 
+void Game::removeDequeuedObject() {
+    // Dequeue of the first object to be removed
+
+    GameObject *object = toRemoveQueue.front();
+    toRemoveQueue.pop();
+
+    this->scene->removeShape(object->getShapeIndex());
+    this->objects.erase(std::remove(objects.begin(), objects.end(), object), objects.end());
+}
+
 void Game::addObject(GameObject *object) {
     toAddQueue.push(object);
+}
+
+void Game::removeObject(GameObject *object) {
+    toRemoveQueue.push(object);
 }
 
 void Game::start() {
@@ -61,6 +79,9 @@ void Game::update() {
     if (!toAddQueue.empty()) {
         addDequeuedObject();
     }
+    if (!toRemoveQueue.empty()) {
+        removeDequeuedObject();
+    }
 
     for (GameObject *object: objects) {
         object->setX(object->getX() + object->getVelocity().x);
@@ -74,6 +95,10 @@ void Game::update() {
         shape->translation.x = object->getX();
         shape->translation.y = object->getY();
         shape->rotationAngle = glm::radians(object->getRotation());
+
+        if (object->getX() < REMOVE_OBJECTS_X_THRESHOLD) {
+            removeObject(object);
+        }
     }
 
     // Spawn pipes

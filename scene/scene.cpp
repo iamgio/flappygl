@@ -19,7 +19,7 @@ Scene::Scene(GLint mvpUniformID) {
     // Y=0 is on the bottom for better usability
     projection = glm::ortho(.0f, (float) SCENE_WIDTH, .0f, (float) SCENE_HEIGHT);
 
-    this->shapes = std::array<Shape, MAX_SHAPES>();
+    this->shapes = std::vector<Shape>();
 
     backgroundColor(BACKGROUND_COLOR);
 }
@@ -36,8 +36,16 @@ void Scene::addShape(Shape shape) {
         shape.colorsVbo = newBuffer(&shape.colors.front(), shape.colors.size() * vecSize);
     }
 
-    this->shapes[shapeAmount++] = shape;
+    this->shapes.push_back(shape);
+    shapeAmount++;
 }
+
+void Scene::removeShape(int index) {
+    this->shapes[index] = {};
+
+    // TODO free VBOs
+}
+
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {

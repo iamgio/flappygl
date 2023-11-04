@@ -16,6 +16,7 @@ private:
 public:
     Game(Scene *scene);
     void addObject(GameObject *object);
+    void removeObject(GameObject *object);
 
     void start();
     void update();
