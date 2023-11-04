@@ -11,6 +11,7 @@ private:
     Scene *scene;
 
     void addDequeuedObject();
+    void removeDequeuedObject();
     void handleCollisions(GameObject *object);
 public:
     Game(Scene *scene);

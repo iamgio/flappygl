@@ -11,7 +11,7 @@ void Bird::update() {
 }
 
 void Bird::jump() {
-    if (velocity.y < jumpForce.y) {
+    if (velocity.y < jumpForce.y / 4) {
         velocity = jumpForce;
     }
 }
