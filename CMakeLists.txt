@@ -36,6 +36,8 @@ add_executable(${PROJECT_NAME} main.cpp
         settings.h
         game/bird.cpp
         game/bird.h
+        game/pipe.h
+        game/pipe.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})

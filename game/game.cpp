@@ -28,6 +28,8 @@ void Game::addObject(GameObject *object) {
 
 void Game::update() {
     for (GameObject *object: objects) {
+        object->update();
+
         int index = object->getShapeIndex();
         Shape *shape = scene->getShape(index);
         shape->translation.x = object->getX();

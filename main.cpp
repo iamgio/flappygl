@@ -10,6 +10,7 @@
 #include "scene/scene.h"
 #include "game/ground.h"
 #include "game/bird.h"
+#include "game/pipe.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT 600
@@ -69,6 +70,7 @@ int main(int argc, char **argv) {
 
     game->addObject(new Ground());
     game->addObject(new Bird());
+    game->addObject(new Pipe());
 
     do {
         // Applu shaders

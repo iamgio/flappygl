@@ -6,5 +6,6 @@
 
 Shape createBirdShape(Scene *scene);
 Shape createGroundShape(Scene *scene);
+Shape createPipeShape(Scene *scene);
 
 #endif
