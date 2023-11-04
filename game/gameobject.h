@@ -8,6 +8,7 @@
 
 class GameObject {
 private:
+    int type;
     BoundingBox *boundingBox;
     int shapeIndex; // Index of the shape within the scene
 protected:
@@ -15,7 +16,8 @@ protected:
     float y;
     float rotation;
 public:
-    GameObject(float x, float y, BoundingBox *boundingBox);
+    GameObject(int type, float x, float y, BoundingBox *boundingBox);
+    int getType();
     float getX();
     float getY();
     float getRotation(); // In degrees

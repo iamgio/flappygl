@@ -6,6 +6,8 @@
 #include "../scene/scene_shapes.h"
 #include "ground.h"
 
+#define TYPE_PIPE 2
+
 #define PIPE_WIDTH 10
 
 #define SKY_PIPE 0
@@ -16,7 +18,7 @@ private:
     int type;
     float height;
 public:
-    Pipe(int type, float height): GameObject(SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT, new BoundingBox(PIPE_WIDTH, height)) {
+    Pipe(int type, float height): GameObject(TYPE_PIPE, SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT, new BoundingBox(PIPE_WIDTH, height)) {
         this->type = type;
         this->height = height;
         if (type == SKY_PIPE) {

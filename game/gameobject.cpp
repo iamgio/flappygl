@@ -1,11 +1,16 @@
 #include "gameobject.h"
 
 
-GameObject::GameObject(float x, float y, BoundingBox *boundingBox) {
+GameObject::GameObject(int type, float x, float y, BoundingBox *boundingBox) {
+    this->type = type;
     this->x = x;
     this->y = y;
     this->rotation = 0;
     this->boundingBox = boundingBox;
+}
+
+int GameObject::getType() {
+    return this->type;
 }
 
 float GameObject::getX() {
