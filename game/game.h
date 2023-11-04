@@ -7,6 +7,7 @@
 class Game {
 private:
     int score;
+    int ticks; // Internal timer
     std::vector<GameObject*> objects;
     Scene *scene;
 

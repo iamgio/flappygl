@@ -1,18 +1,14 @@
 #include <iostream>
 #include <queue>
 #include "game.h"
-#include "../scene/bbox.h"
 #include "../settings.h"
 #include "pipe_pair.h"
 #include "bird.h"
 
-#define PIPE_SPAWN_TICKS 250
+#define PIPE_SPAWN_TICKS 180
 
 // When going past this X coordinate, an object is removed
 #define REMOVE_OBJECTS_X_THRESHOLD -50
-
-// Internal timer
-static int ticks = 0;
 
 static std::queue<GameObject*> toAddQueue;
 static std::queue<GameObject*> toRemoveQueue;
