@@ -75,10 +75,6 @@ int main(int argc, char **argv) {
     game->addObject(new Ground());
     game->addObject(new Bird());
 
-    auto pair = createPipePair();
-    game->addObject(pair.first);
-    game->addObject(pair.second);
-
     do {
         // Applu shaders
         glUseProgram(shaders);

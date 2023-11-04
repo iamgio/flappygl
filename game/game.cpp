@@ -2,6 +2,12 @@
 #include "game.h"
 #include "../scene/bbox.h"
 #include "../settings.h"
+#include "pipe_pair.h"
+
+#define PIPE_SPAWN_TICKS 700
+
+// Internal timer
+static int ticks = 0;
 
 Game::Game(Scene *scene) {
     this->score = 0;
@@ -26,6 +32,11 @@ void Game::addObject(GameObject *object) {
 #endif
 }
 
+void Game::start() {
+    ticks = 0;
+    srand(time(NULL));
+}
+
 void Game::update() {
     for (GameObject *object: objects) {
         object->update();
@@ -35,4 +46,12 @@ void Game::update() {
         shape->translation.x = object->getX();
         shape->translation.y = object->getY();
     }
+
+    if (ticks % PIPE_SPAWN_TICKS == 0) {
+        auto pair = createPipePair();
+        addObject(pair.first);
+        addObject(pair.second);
+    }
+
+    ticks++;
 }

@@ -17,7 +17,7 @@ private:
     int type;
     float height;
 public:
-    Pipe(int type, float height): GameObject(100.0f, type ? GROUND_HEIGHT : SCENE_HEIGHT - height, new BoundingBox(PIPE_WIDTH, height)) {
+    Pipe(int type, float height): GameObject(SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT - height, new BoundingBox(PIPE_WIDTH, height)) {
         this->type = type;
         this->height = height;
     }
