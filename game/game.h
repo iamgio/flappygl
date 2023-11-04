@@ -9,6 +9,8 @@ private:
     int score;
     std::vector<GameObject*> objects;
     Scene *scene;
+
+    void addDequeuedObject();
 public:
     Game(Scene *scene);
     std::vector<GameObject*> getGameObjects();

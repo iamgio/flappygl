@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include "game.h"
 #include "../scene/bbox.h"
 #include "../settings.h"
@@ -8,6 +9,8 @@
 
 // Internal timer
 static int ticks = 0;
+
+static std::queue<GameObject*> toAddQueue;
 
 Game::Game(Scene *scene) {
     this->score = 0;
@@ -19,7 +22,12 @@ std::vector<GameObject*> Game::getGameObjects() {
     return this->objects;
 }
 
-void Game::addObject(GameObject *object) {
+void Game::addDequeuedObject() {
+    // Dequeue of the first object to be added
+
+    GameObject *object = toAddQueue.front();
+    toAddQueue.pop();
+
     this->objects.push_back(object);
     Shape shape = object->createShape(this->scene);
     int index = scene->getShapesAmount();
@@ -32,12 +40,21 @@ void Game::addObject(GameObject *object) {
 #endif
 }
 
+void Game::addObject(GameObject *object) {
+    toAddQueue.push(object);
+}
+
 void Game::start() {
     ticks = 0;
     srand(time(NULL));
 }
 
 void Game::update() {
+    // Objects are added here to avoid flickering
+    if (!toAddQueue.empty()) {
+        addDequeuedObject();
+    }
+
     for (GameObject *object: objects) {
         object->update();
 
@@ -47,6 +64,7 @@ void Game::update() {
         shape->translation.y = object->getY();
     }
 
+    // Spawn pipes
     if (ticks % PIPE_SPAWN_TICKS == 0) {
         auto pair = createPipePair();
         addObject(pair.first);
