@@ -38,6 +38,9 @@ add_executable(${PROJECT_NAME} main.cpp
         game/bird.h
         game/pipe.h
         game/pipe.cpp
+        game/pipe_pair.h
+        game/pipe_pair.cpp
+        random.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})

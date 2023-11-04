@@ -13,6 +13,8 @@ public:
     Game(Scene *scene);
     std::vector<GameObject*> getGameObjects();
     void addObject(GameObject *object);
+
+    void start();
     void update();
 };
 

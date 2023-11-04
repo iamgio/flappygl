@@ -12,6 +12,7 @@
 #include "game/ground.h"
 #include "game/bird.h"
 #include "game/pipe.h"
+#include "game/pipe_pair.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -69,10 +70,14 @@ int main(int argc, char **argv) {
     scene = new Scene(MatrixID);
     game = new Game(scene);
 
+    game->start();
+
     game->addObject(new Ground());
     game->addObject(new Bird());
-    game->addObject(new Pipe(GROUND_PIPE, 30.0f));
-    game->addObject(new Pipe(SKY_PIPE, 10.0f));
+
+    auto pair = createPipePair();
+    game->addObject(pair.first);
+    game->addObject(pair.second);
 
     do {
         // Applu shaders
