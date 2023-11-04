@@ -9,14 +9,21 @@
 #define PIPE_WIDTH 10
 #define PIPE_HEIGHT 20 // TODO both 'up' and 'down' pipes should form a fixed-size hole
 
-class Pipe: public GameObject {
-public:
-    Pipe(): GameObject(100.0f, GROUND_HEIGHT, new BoundingBox(PIPE_WIDTH, PIPE_HEIGHT)) {
+#define SKY_PIPE 0
+#define GROUND_PIPE 1
 
+class Pipe: public GameObject {
+private:
+    int type;
+    float height;
+public:
+    Pipe(int type, float height): GameObject(100.0f, type ? GROUND_HEIGHT : SCENE_HEIGHT - height, new BoundingBox(PIPE_WIDTH, height)) {
+        this->type = type;
+        this->height = height;
     }
 
     Shape createShape(Scene *scene) {
-        return createPipeShape();
+        return createPipeShape(height);
     }
 
     void update();

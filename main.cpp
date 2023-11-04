@@ -71,7 +71,8 @@ int main(int argc, char **argv) {
 
     game->addObject(new Ground());
     game->addObject(new Bird());
-    game->addObject(new Pipe());
+    game->addObject(new Pipe(GROUND_PIPE, 30.0f));
+    game->addObject(new Pipe(SKY_PIPE, 10.0f));
 
     do {
         // Applu shaders

@@ -29,12 +29,12 @@ Shape createGroundShape() {
             colorTop, colorTop);
 }
 
-Shape createPipeShape() {
+Shape createPipeShape(float height) {
     glm::vec3 colorTop = glm::vec3(PIPE_COLOR_TOP);
     glm::vec3 colorBottom = glm::vec3(PIPE_COLOR_BOTTOM);
     return generateRectangle(
             0, 0,
-            PIPE_WIDTH, PIPE_HEIGHT,
+            PIPE_WIDTH, height,
             colorBottom, colorBottom,
             colorTop, colorTop);
 }
