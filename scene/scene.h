@@ -4,22 +4,24 @@
 
 #include <vector>
 #include "../shape.hpp"
+#include "../settings.h"
+
+// Scene height is fixed, scene width is calculated to maintain the aspect ratio
+
+#define SCENE_HEIGHT 100
+#define SCENE_WIDTH (SCENE_HEIGHT * ASPECT_RATIO)
 
 #define MAX_SHAPES 100
 
 class Scene {
 private:
-    float width;
-    float height;
     int shapeAmount;
     std::array<Shape, MAX_SHAPES> shapes;
     GLint mvpUniformID;
 public:
-    Scene(float width, float height, GLint mvpUniformID);
+    Scene(GLint mvpUniformID);
     void addShape(Shape shape);
     void draw();
-    float getWidth();
-    float getHeight();
     int getShapesAmount();
     Shape *getShape(int index);
 };

@@ -5,20 +5,19 @@
 #include "../gl.hpp"
 #include "../shapes.hpp"
 #include "../mvp.h"
+#include "../settings.h"
 
 #define BACKGROUND_COLOR 0.58f, 0.91f, 0.96f
 
 // Orthographic projection
 static glm::mat4 projection;
 
-Scene::Scene(float width, float height, GLint mvpUniformID) {
-    this->width = width;
-    this->height = height;
+Scene::Scene(GLint mvpUniformID) {
     this->shapeAmount = 0;
     this->mvpUniformID = mvpUniformID;
     // [-1,1] -> [0,SIZE] mapping
     // Y=0 is on the bottom for better usability
-    projection = glm::ortho(0.0f, width, 0.0f, height);
+    projection = glm::ortho(.0f, (float) SCENE_WIDTH, .0f, (float) SCENE_HEIGHT);
 
     this->shapes = std::array<Shape, MAX_SHAPES>();
 
@@ -46,14 +45,6 @@ void Scene::draw() {
         updateMVP(mvp, this->mvpUniformID);
         ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
     }
-}
-
-float Scene::getWidth() {
-    return this->width;
-}
-
-float Scene::getHeight() {
-    return this->height;
 }
 
 int Scene::getShapesAmount() {

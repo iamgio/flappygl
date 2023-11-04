@@ -6,17 +6,17 @@
 #include "../scene/scene_shapes.h"
 #include "ground.h"
 
-#define PIPE_WIDTH 50
-#define PIPE_HEIGHT 200
+#define PIPE_WIDTH 10
+#define PIPE_HEIGHT 20 // TODO both 'up' and 'down' pipes should form a fixed-size hole
 
 class Pipe: public GameObject {
 public:
-    Pipe(): GameObject(500.0f, GROUND_HEIGHT, new BoundingBox(PIPE_WIDTH, PIPE_HEIGHT)) {
+    Pipe(): GameObject(100.0f, GROUND_HEIGHT, new BoundingBox(PIPE_WIDTH, PIPE_HEIGHT)) {
 
     }
 
     Shape createShape(Scene *scene) {
-        return createPipeShape(scene);
+        return createPipeShape();
     }
 
     void update();

@@ -4,8 +4,8 @@
 #include "../shape.hpp"
 #include "scene.h"
 
-Shape createBirdShape(Scene *scene);
-Shape createGroundShape(Scene *scene);
-Shape createPipeShape(Scene *scene);
+Shape createBirdShape();
+Shape createGroundShape();
+Shape createPipeShape();
 
 #endif

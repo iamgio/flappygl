@@ -5,7 +5,7 @@
 #include "../scene/scene_shapes.h"
 
 #define GROUND_WIDTH 1000
-#define GROUND_HEIGHT 60
+#define GROUND_HEIGHT 10
 
 class Ground: public GameObject {
 public:
@@ -14,7 +14,7 @@ public:
     }
 
     Shape createShape(Scene *scene) {
-        return createGroundShape(scene);
+        return createGroundShape();
     }
 
     void update() {

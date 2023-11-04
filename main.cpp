@@ -6,6 +6,7 @@
 #include "shapes.hpp"
 #include "gl.hpp"
 #include "window.hpp"
+#include "settings.h"
 #include "game/game.h"
 #include "scene/scene.h"
 #include "game/ground.h"
@@ -13,7 +14,7 @@
 #include "game/pipe.h"
 
 #define WIN_WIDTH 1100
-#define WIN_HEIGHT 600
+#define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
 
 static Game *game;
 static Scene *scene;
@@ -65,7 +66,7 @@ int main(int argc, char **argv) {
     // Only during the initialisation
     GLint MatrixID = glGetUniformLocation(shaders, "MVP");
 
-    scene = new Scene(WIN_WIDTH, WIN_HEIGHT, MatrixID);
+    scene = new Scene(MatrixID);
     game = new Game(scene);
 
     game->addObject(new Ground());
