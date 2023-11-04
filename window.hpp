@@ -10,4 +10,6 @@ void setupWindowProperties();
 
 bool isAlive(GLFWwindow *window);
 
+bool isKeyPressed(GLFWwindow *window, int key);
+
 #endif

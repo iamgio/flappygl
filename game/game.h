@@ -18,6 +18,8 @@ public:
 
     void start();
     void update();
+
+    void jump();
 };
 
 #endif

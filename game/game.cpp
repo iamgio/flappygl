@@ -85,3 +85,11 @@ void Game::update() {
 
     ticks++;
 }
+
+void Game::jump() {
+    for (GameObject *object: objects) {
+        if (object->getType() != TYPE_BIRD) continue;
+
+
+    }
+}

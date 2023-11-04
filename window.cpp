@@ -1,6 +1,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "window.hpp"
+
 
 GLFWwindow *setupWindow(const char *title, int width, int height) {
     GLFWwindow *window = glfwCreateWindow(width, height, title, nullptr, nullptr);
@@ -26,5 +28,9 @@ void setupWindowProperties() {
 
 bool isAlive(GLFWwindow *window) {
     // Check if the ESC key was pressed or the window was closed
-    return glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && !glfwWindowShouldClose(window);
+    return !isKeyPressed(window, GLFW_KEY_ESCAPE) && !glfwWindowShouldClose(window);
+}
+
+bool isKeyPressed(GLFWwindow *window, int key) {
+    return glfwGetKey(window, key) == GLFW_PRESS;
 }
