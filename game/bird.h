@@ -14,6 +14,8 @@ public:
     Shape createShape(Scene *scene) {
         return createBirdShape(scene);
     }
+
+    void update();
 };
 
 

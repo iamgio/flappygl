@@ -8,10 +8,11 @@
 
 class GameObject {
 private:
-    float x;
-    float y;
     BoundingBox *boundingBox;
     int shapeIndex; // Index of the shape within the scene
+protected:
+    float x;
+    float y;
 public:
     GameObject(float x, float y, BoundingBox *boundingBox);
     float getX();
@@ -24,6 +25,8 @@ public:
     void setShapeIndex(int index);
 
     virtual Shape createShape(Scene *scene) = 0;
+
+    virtual void update() = 0;
 };
 
 

@@ -42,7 +42,6 @@ void Scene::addShape(Shape shape) {
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {
-        std::cout << shape.translation.x << std::endl;
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
         updateMVP(mvp, this->mvpUniformID);
         ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);

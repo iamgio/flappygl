@@ -15,6 +15,10 @@ public:
     Shape createShape(Scene *scene) {
         return createGroundShape(scene);
     }
+
+    void update() {
+
+    }
 };
 
 
