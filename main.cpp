@@ -3,7 +3,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include "shaders.hpp"
-#include "shapes.hpp"
 #include "gl.hpp"
 #include "window.hpp"
 #include "settings.h"
@@ -95,10 +94,8 @@ int main(int argc, char **argv) {
     } while (isAlive(window));
 
     // Cleanup VBO and shader
-    //glDeleteBuffers(1, &shape.verticesVbo);
-    //glDeleteBuffers(1, &shape.colorsVbo);
-    //glDeleteProgram(shaders);
-    //glDeleteVertexArrays(1, &vao);
+    glDeleteProgram(shaders);
+    glDeleteVertexArrays(1, &vao);
 
     // Close GL context and any other GLFW resources
     glfwTerminate();

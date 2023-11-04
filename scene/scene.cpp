@@ -41,9 +41,8 @@ void Scene::addShape(Shape shape) {
 }
 
 void Scene::removeShape(int index) {
+    freeShape(this->shapes[index]);
     this->shapes[index] = {};
-
-    // TODO free VBOs
 }
 
 

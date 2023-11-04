@@ -1,9 +1,10 @@
+#ifndef FLAPPYGL_SHAPE_H
+#define FLAPPYGL_SHAPE_H
+
+
 #include <GL/glew.h>
 #include <vector>
 #include <glm/glm.hpp>
-
-#ifndef __SHAPE_H__
-#define __SHAPE_H__
 
 typedef struct {
     GLuint verticesVbo;
@@ -18,5 +19,7 @@ typedef struct {
     //glm::vec3 rotationAxis;
     GLenum method;
 } Shape;
+
+void freeShape(Shape shape);
 
 #endif
