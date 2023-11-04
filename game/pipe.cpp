@@ -1,6 +1,18 @@
 #include <iostream>
 #include "pipe.h"
 
+Pipe::Pipe(int type, float height): GameObject(TYPE_PIPE, SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT - height /*TODO when flipped*/, new BoundingBox(PIPE_WIDTH, height)) {
+    this->type = type;
+    this->height = height;
+    this->velocity = glm::vec3(-0.1f, .0f, .0f);
+
+    if (type == SKY_PIPE) {
+        // TODO fix collisions when flipped
+        //this->x += PIPE_WIDTH;
+        //this->rotation = 180; // Vertically flipped
+    }
+}
+
 void Pipe::update() {
-    x -= 0.1;
+
 }

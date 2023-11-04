@@ -15,12 +15,23 @@ protected:
     float x;
     float y;
     float rotation;
+    glm::vec3 velocity;
 public:
     GameObject(int type, float x, float y, BoundingBox *boundingBox);
     int getType();
+
     float getX();
+    void setX(float newX);
+
     float getY();
+    void setY(float y);
+
     float getRotation(); // In degrees
+    void setRotation(float rotation);
+
+    glm::vec3 getVelocity();
+    void setVelocity(glm::vec3 velocity);
+
     BoundingBox *getBoundingBox();
 
     bool isColliding(GameObject *other);

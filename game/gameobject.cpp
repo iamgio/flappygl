@@ -17,12 +17,32 @@ float GameObject::getX() {
     return this->x;
 }
 
+void GameObject::setX(float newX) {
+    this->x = newX;
+}
+
 float GameObject::getY() {
     return this->y;
 }
 
+void GameObject::setY(float newY) {
+    this->y = newY;
+}
+
 float GameObject::getRotation() {
     return this->rotation;
+}
+
+void GameObject::setRotation(float newRotation) {
+    this->rotation = newRotation;
+}
+
+glm::vec3 GameObject::getVelocity() {
+    return this->velocity;
+}
+
+void GameObject::setVelocity(glm::vec3 newVelocity) {
+    this->velocity = newVelocity;
 }
 
 BoundingBox *GameObject::getBoundingBox() {

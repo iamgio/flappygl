@@ -63,6 +63,9 @@ void Game::update() {
     }
 
     for (GameObject *object: objects) {
+        object->setX(object->getX() + object->getVelocity().x);
+        object->setY(object->getY() + object->getVelocity().y);
+
         object->update();
         handleCollisions(object);
 
