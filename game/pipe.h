@@ -7,7 +7,6 @@
 #include "ground.h"
 
 #define PIPE_WIDTH 10
-#define PIPE_HEIGHT 20 // TODO both 'up' and 'down' pipes should form a fixed-size hole
 
 #define SKY_PIPE 0
 #define GROUND_PIPE 1
@@ -17,9 +16,13 @@ private:
     int type;
     float height;
 public:
-    Pipe(int type, float height): GameObject(SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT - height, new BoundingBox(PIPE_WIDTH, height)) {
+    Pipe(int type, float height): GameObject(SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT, new BoundingBox(PIPE_WIDTH, height)) {
         this->type = type;
         this->height = height;
+        if (type == SKY_PIPE) {
+            this->x += PIPE_WIDTH;
+            this->rotation = 180; // Vertically flipped
+        }
     }
 
     Shape createShape(Scene *scene) {
