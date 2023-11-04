@@ -6,7 +6,7 @@
 #include "pipe_pair.h"
 #include "bird.h"
 
-#define PIPE_SPAWN_TICKS 700
+#define PIPE_SPAWN_TICKS 250
 
 // When going past this X coordinate, an object is removed
 #define REMOVE_OBJECTS_X_THRESHOLD -50

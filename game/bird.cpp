@@ -1,7 +1,7 @@
 #include "bird.h"
 
 #define GRAVITY_Y -.015f
-#define JUMP_Y .35f
+#define JUMP_Y .45f
 
 static glm::vec3 gravityForce = glm::vec3(.0f, GRAVITY_Y, .0f);
 static glm::vec3 jumpForce = glm::vec3(.0f, JUMP_Y, .0f);

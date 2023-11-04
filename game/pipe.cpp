@@ -1,7 +1,7 @@
 #include <iostream>
 #include "pipe.h"
 
-#define SPEED_X -0.3f
+#define SPEED_X -0.25f
 
 Pipe::Pipe(int type, float height): GameObject(TYPE_PIPE, SCENE_WIDTH, type ? GROUND_HEIGHT : SCENE_HEIGHT - height /*TODO when flipped*/, new BoundingBox(PIPE_WIDTH, height)) {
     this->type = type;
