@@ -4,6 +4,7 @@
 GameObject::GameObject(float x, float y, BoundingBox *boundingBox) {
     this->x = x;
     this->y = y;
+    this->rotation = 0;
     this->boundingBox = boundingBox;
 }
 
@@ -13,6 +14,10 @@ float GameObject::getX() {
 
 float GameObject::getY() {
     return this->y;
+}
+
+float GameObject::getRotation() {
+    return this->rotation;
 }
 
 BoundingBox *GameObject::getBoundingBox() {

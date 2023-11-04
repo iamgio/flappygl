@@ -13,10 +13,12 @@ private:
 protected:
     float x;
     float y;
+    float rotation;
 public:
     GameObject(float x, float y, BoundingBox *boundingBox);
     float getX();
     float getY();
+    float getRotation(); // In degrees
     BoundingBox *getBoundingBox();
 
     bool isColliding(GameObject *other);

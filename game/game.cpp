@@ -62,6 +62,7 @@ void Game::update() {
         Shape *shape = scene->getShape(index);
         shape->translation.x = object->getX();
         shape->translation.y = object->getY();
+        shape->rotationAngle = glm::radians(object->getRotation());
     }
 
     // Spawn pipes
