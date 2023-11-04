@@ -11,6 +11,9 @@ GLFWwindow *setupWindow(const char *title, int width, int height) {
     }
     glfwMakeContextCurrent(window);
 
+    // Keep aspect ratio
+    glfwSetWindowAspectRatio(window, width, height);
+
     return window;
 }
 

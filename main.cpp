@@ -15,8 +15,6 @@
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT 600
 
-#define ASPECT_RATIO ((float) WIN_WIDTH / (float) WIN_HEIGHT)
-
 static Game *game;
 static Scene *scene;
 
@@ -42,11 +40,6 @@ int main(int argc, char **argv) {
     if (!window) {
         return 1;
     }
-
-    // Keep aspect ratio
-    glfwSetWindowSizeCallback(window, [](GLFWwindow *window, int width, int height) {
-        glfwSetWindowSize(window, width, (float) width / ASPECT_RATIO);
-    });
 
     // Start GLEW extension handler
     glewExperimental = GL_TRUE;
