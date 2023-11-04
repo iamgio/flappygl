@@ -21,6 +21,8 @@ public:
     }
 
     void update();
+
+    void jump();
 };
 
 

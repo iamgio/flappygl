@@ -1,9 +1,17 @@
 #include "bird.h"
 
 #define GRAVITY_Y -.015f
+#define JUMP_Y .35f
 
-static glm::vec3 gravity = glm::vec3(.0f, GRAVITY_Y, .0f);
+static glm::vec3 gravityForce = glm::vec3(.0f, GRAVITY_Y, .0f);
+static glm::vec3 jumpForce = glm::vec3(.0f, JUMP_Y, .0f);
 
 void Bird::update() {
-    velocity += gravity;
+    velocity += gravityForce;
+}
+
+void Bird::jump() {
+    if (velocity.y < jumpForce.y) {
+        velocity = jumpForce;
+    }
 }

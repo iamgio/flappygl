@@ -11,8 +11,6 @@
 #include "scene/scene.h"
 #include "game/ground.h"
 #include "game/bird.h"
-#include "game/pipe.h"
-#include "game/pipe_pair.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -83,6 +81,10 @@ int main(int argc, char **argv) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         game->update();
+
+        if (isKeyPressed(window, GLFW_KEY_SPACE)) {
+            game->jump();
+        }
 
         //draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount);
         scene->draw();
