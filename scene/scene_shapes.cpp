@@ -12,7 +12,10 @@
 
 Shape createBirdShape(Scene *scene) {
     glm::vec3 color = glm::vec3(0.5, 0.3, 0.2);
-    return generateRectangle(0, 0, 30, 30, color, color, color, color);
+    return generateRectangle(0, 0,
+                             30, 30,
+                             color, color,
+                             color, color);
 };
 
 Shape createGroundShape(Scene *scene) {
@@ -21,8 +24,8 @@ Shape createGroundShape(Scene *scene) {
     return generateRectangle(
             0, 0,
             scene->getWidth(), GROUND_HEIGHT,
-            colorTop, colorTop,
-            colorBottom, colorBottom);
+            colorBottom, colorBottom,
+            colorTop, colorTop);
 }
 
 Shape createPipeShape(Scene *scene) {
@@ -31,6 +34,6 @@ Shape createPipeShape(Scene *scene) {
     return generateRectangle(
             0, 0,
             PIPE_WIDTH, PIPE_HEIGHT,
-            colorTop, colorTop,
-            colorBottom, colorBottom);
+            colorBottom, colorBottom,
+            colorTop, colorTop);
 }
