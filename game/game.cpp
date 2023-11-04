@@ -4,6 +4,7 @@
 #include "../scene/bbox.h"
 #include "../settings.h"
 #include "pipe_pair.h"
+#include "bird.h"
 
 #define PIPE_SPAWN_TICKS 700
 
@@ -16,10 +17,6 @@ Game::Game(Scene *scene) {
     this->score = 0;
     this->objects = std::vector<GameObject*>();
     this->scene = scene;
-}
-
-std::vector<GameObject*> Game::getGameObjects() {
-    return this->objects;
 }
 
 void Game::addDequeuedObject() {
@@ -49,6 +46,16 @@ void Game::start() {
     srand(time(NULL));
 }
 
+void Game::handleCollisions(GameObject *object) {
+    if (object->getType() != TYPE_BIRD) return;
+    for (GameObject *other: objects) {
+        if (object == other) continue;
+        if (object->isColliding(other)) {
+            std::cout << "BIRD COLLISION" << std::endl;
+        }
+    }
+}
+
 void Game::update() {
     // Objects are added here to avoid flickering
     if (!toAddQueue.empty()) {
@@ -57,6 +64,7 @@ void Game::update() {
 
     for (GameObject *object: objects) {
         object->update();
+        handleCollisions(object);
 
         int index = object->getShapeIndex();
         Shape *shape = scene->getShape(index);

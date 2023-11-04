@@ -11,9 +11,9 @@ private:
     Scene *scene;
 
     void addDequeuedObject();
+    void handleCollisions(GameObject *object);
 public:
     Game(Scene *scene);
-    std::vector<GameObject*> getGameObjects();
     void addObject(GameObject *object);
 
     void start();
