@@ -13,9 +13,7 @@
 
 class Bird: public GameObject {
 public:
-    Bird(): GameObject(TYPE_BIRD, BIRD_X, BIRD_Y, new BoundingBox(BIRD_SIZE, BIRD_SIZE, true, true)) {
-
-    }
+    Bird();
 
     Shape createShape(Scene *scene) {
         return createBirdShape();

@@ -10,6 +10,11 @@
 static glm::vec3 gravityForce = glm::vec3(.0f, GRAVITY_Y, .0f);
 static glm::vec3 jumpForce = glm::vec3(.0f, JUMP_Y, .0f);
 
+// SQRT2 uses the circular area as a bounding box
+Bird::Bird(): GameObject(TYPE_BIRD, BIRD_X, BIRD_Y, new BoundingBox(BIRD_SIZE * SQRT2, BIRD_SIZE * SQRT2, true, true)) {
+
+}
+
 void Bird::update() {
     velocity += gravityForce;
 
