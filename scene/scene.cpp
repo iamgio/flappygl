@@ -2,7 +2,7 @@
 #include <iostream>
 #include "scene.h"
 #include "../gl.h"
-#include "../shapes.hpp"
+#include "../shapes.h"
 #include "../settings.h"
 #include "../glm.h"
 

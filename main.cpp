@@ -2,9 +2,9 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
-#include "shaders.hpp"
+#include "shaders.h"
 #include "gl.h"
-#include "window.hpp"
+#include "window.h"
 #include "settings.h"
 #include "game/game.h"
 #include "scene/scene.h"

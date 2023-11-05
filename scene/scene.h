@@ -3,7 +3,7 @@
 
 
 #include <vector>
-#include "../shape.hpp"
+#include "../shape.h"
 #include "../settings.h"
 #define GLT_IMPLEMENTATION
 #include "../text/gltext.h"

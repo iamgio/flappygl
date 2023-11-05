@@ -1,7 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "window.hpp"
+#include "window.h"
 
 
 GLFWwindow *setupWindow(const char *title, int width, int height) {

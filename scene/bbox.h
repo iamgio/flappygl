@@ -1,7 +1,7 @@
 #ifndef FLAPPYGL_BBOX_H
 #define FLAPPYGL_BBOX_H
 
-#include "../shape.hpp"
+#include "../shape.h"
 #include "../game/gameobject.h"
 
 Shape createBoundingBoxShape(GameObject *object) {

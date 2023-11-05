@@ -3,7 +3,7 @@
 
 
 #include "../collision/boundingbox.h"
-#include "../shape.hpp"
+#include "../shape.h"
 #include "../scene/scene.h"
 
 class GameObject {

@@ -21,11 +21,11 @@ find_library(GL_LIB opengl)
 add_definitions(-DGLEW_STATIC)
 
 add_executable(${PROJECT_NAME} main.cpp
-        shaders.hpp shaders.cpp
-        shapes.hpp shapes.cpp
-        shape.hpp
+        shaders.h shaders.cpp
+        shapes.h shapes.cpp
+        shape.h
         gl.h gl.cpp
-        window.hpp window.cpp
+        window.h window.cpp
         glm.cpp glm.h
         scene/scene.h scene/scene.cpp
         game/game.h game/game.cpp

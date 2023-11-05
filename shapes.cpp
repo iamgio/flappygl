@@ -1,6 +1,6 @@
 #include <iostream>
-#include "shapes.hpp"
-#include "shape.hpp"
+#include "shapes.h"
+#include "shape.h"
 
 Shape generateRectangle(float x, float y, float w, float h,
                         glm::vec3 topLeftColor, glm::vec3 topRightColor, glm::vec3 bottomLeftColor, glm::vec3 bottomRightColor) {

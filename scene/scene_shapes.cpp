@@ -1,7 +1,7 @@
-#include "../shape.hpp"
+#include "../shape.h"
 #include "scene.h"
 #include "../game/ground.h"
-#include "../shapes.hpp"
+#include "../shapes.h"
 #include "../game/pipe.h"
 #include "../game/bird.h"
 
