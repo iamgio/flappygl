@@ -10,9 +10,13 @@
 #include "scene/scene.h"
 #define GLT_IMPLEMENTATION
 #include "text/gltext.h"
+#include "text/text.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
+
+#define SCORE_FONT_SCALE_IN_GAME 5.0f
+#define SCORE_FONT_SCALE_ENDED 15.0f
 
 static Game *game;
 static Scene *scene;
@@ -76,7 +80,7 @@ int main(int argc, char **argv) {
     gltInit();
 
     // Create score text
-    GLTtext *scoreText = gltCreateText();
+    Text *scoreText = new Text();
 
     do {
         // Applu shaders
@@ -93,9 +97,11 @@ int main(int argc, char **argv) {
 
         scene->draw();
 
-        gltSetText(scoreText, "Hello World!");
+        scoreText->setText(("Score: " + std::to_string(game->getScore())).c_str());
+        //scoreText->draw(.0f, .0f, 20.0f);
+
         gltBeginDraw();
-        gltDrawText2D(scoreText, .0f, .0f, 20.0f);
+        gltDrawText2D(scoreText->text, .0f, .0f, game->hasEnded() ? SCORE_FONT_SCALE_ENDED : SCORE_FONT_SCALE_IN_GAME);
         gltEndDraw();
 
         // Swap buffers
@@ -108,6 +114,8 @@ int main(int argc, char **argv) {
     glDeleteVertexArrays(1, &vao);
 
     // Close GL context and any other GLFW resources
+    gltTerminate();
+    scoreText->del();
     glfwTerminate();
     return 0;
 }

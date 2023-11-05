@@ -1,13 +1,13 @@
 #ifndef FLAPPYGL_TEXT_H
 #define FLAPPYGL_TEXT_H
 
-#define GLT_IMPLEMENTATION
 #include "gltext.h"
 
 class Text {
 private:
-    GLTtext *text;
+
 public:
+    GLTtext *text;
     Text();
 
     void setColor(float r, float g, float b);

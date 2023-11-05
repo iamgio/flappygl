@@ -17,6 +17,10 @@ private:
     void handleCollisions(GameObject *object);
 public:
     Game(Scene *scene);
+
+    int getScore();
+    bool hasEnded();
+
     void addObject(GameObject *object);
     void removeObject(GameObject *object);
 

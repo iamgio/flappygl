@@ -25,6 +25,14 @@ Game::Game(Scene *scene) {
     this->scene = scene;
 }
 
+int Game::getScore() {
+    return this->score;
+}
+
+bool Game::hasEnded() {
+    return !this->shouldUpdate;
+}
+
 void Game::addDequeuedObject() {
     // Dequeue of the first object to be added
 
