@@ -21,7 +21,6 @@ static std::queue<GameObject*> toRemoveQueue;
 static int endGameTicks;
 
 Game::Game(Scene *scene) {
-    this->score = 0;
     this->scene = scene;
 }
 
@@ -62,6 +61,7 @@ void Game::removeObject(GameObject *object) {
 }
 
 void Game::start() {
+    score = 0;
     ticks = 0;
     endGameTicks = 0;
     shouldUpdate = true;
