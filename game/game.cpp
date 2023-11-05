@@ -4,6 +4,10 @@
 #include "../settings.h"
 #include "pipe_pair.h"
 #include "bird.h"
+#include "ground.h"
+
+// Time after game end to start a new game
+#define RESTART_TICKS 80
 
 #define PIPE_SPAWN_TICKS 180
 
@@ -13,9 +17,11 @@
 static std::queue<GameObject*> toAddQueue;
 static std::queue<GameObject*> toRemoveQueue;
 
+// Ticks when the game ended
+static int endGameTicks;
+
 Game::Game(Scene *scene) {
     this->score = 0;
-    this->objects = std::vector<GameObject*>();
     this->scene = scene;
 }
 
@@ -57,7 +63,15 @@ void Game::removeObject(GameObject *object) {
 
 void Game::start() {
     ticks = 0;
+    endGameTicks = 0;
+    shouldUpdate = true;
+
+    this->objects = std::vector<GameObject*>();
+
     srand(time(NULL));
+
+    this->addObject(new Ground());
+    this->addObject(new Bird());
 }
 
 void Game::handleCollisions(GameObject *object) {
@@ -66,11 +80,21 @@ void Game::handleCollisions(GameObject *object) {
         if (object == other) continue;
         if (object->isColliding(other)) {
             std::cout << "BIRD COLLISION" << std::endl;
+            stop();
         }
     }
 }
 
 void Game::update() {
+    ticks++;
+
+    if (!shouldUpdate) {
+        if (ticks - endGameTicks > RESTART_TICKS) {
+            restart();
+        }
+        return;
+    }
+
     // Objects are added here to avoid flickering
     if (!toAddQueue.empty()) {
         addDequeuedObject();
@@ -103,8 +127,21 @@ void Game::update() {
         addObject(pair.first);
         addObject(pair.second);
     }
+}
 
-    ticks++;
+void Game::stop() {
+    shouldUpdate = false;
+    endGameTicks = ticks;
+}
+
+void Game::restart() {
+    while (!toAddQueue.empty()) toAddQueue.pop();
+
+    for (GameObject *object: objects) {
+        removeObject(object);
+    }
+
+    start();
 }
 
 void Game::jump() {

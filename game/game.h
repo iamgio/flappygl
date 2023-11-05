@@ -8,6 +8,7 @@ class Game {
 private:
     int score;
     int ticks; // Internal timer
+    bool shouldUpdate;
     std::vector<GameObject*> objects;
     Scene *scene;
 
@@ -21,6 +22,8 @@ public:
 
     void start();
     void update();
+    void stop();
+    void restart();
 
     void jump();
 };

@@ -69,9 +69,6 @@ int main(int argc, char **argv) {
 
     game->start();
 
-    game->addObject(new Ground());
-    game->addObject(new Bird());
-
     do {
         // Applu shaders
         glUseProgram(shaders);
