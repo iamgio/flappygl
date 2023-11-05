@@ -13,6 +13,9 @@
 #define SKY_PIPE 0
 #define GROUND_PIPE 1
 
+#define PIPE_START_X (SCENE_WIDTH + PIPE_WIDTH)
+#define PIPE_SPEED_X -0.3f
+
 class Pipe: public GameObject {
 private:
     int type;

@@ -3,6 +3,7 @@
 
 #include "gameobject.h"
 
-std::pair<GameObject*, GameObject*> createPipePair();
+// Ground pipe, score increaser, sky pipe
+std::tuple<GameObject*, GameObject*, GameObject*> createPipePair();
 
 #endif

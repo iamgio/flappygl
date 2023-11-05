@@ -5,6 +5,7 @@
 #include "pipe_pair.h"
 #include "bird.h"
 #include "ground.h"
+#include "scoreincreaser.h"
 
 // Time after game end to start a new game
 #define RESTART_TICKS 80
@@ -77,8 +78,13 @@ void Game::start() {
 void Game::handleCollisions(GameObject *object) {
     if (object->getType() != TYPE_BIRD) return;
     for (GameObject *other: objects) {
-        if (object == other) continue;
-        if (object->isColliding(other)) {
+        if (object == other || !object->isColliding(other)) continue;
+
+        if (other->getType() == TYPE_SCORE_INCREASER) {
+            score++;
+            removeObject(other);
+            std::cout << "Score " << score << std::endl;
+        } else {
             std::cout << "BIRD COLLISION" << std::endl;
             stop();
         }
@@ -124,8 +130,9 @@ void Game::update() {
     // Spawn pipes
     if (ticks % PIPE_SPAWN_TICKS == 0) {
         auto pair = createPipePair();
-        addObject(pair.first);
-        addObject(pair.second);
+        addObject(std::get<0>(pair));
+        addObject(std::get<1>(pair));
+        addObject(std::get<2>(pair));
     }
 }
 
