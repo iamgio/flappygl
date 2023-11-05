@@ -6,7 +6,9 @@ void backgroundColor(float r, float g, float b) {
     glClearColor(r, g, b, 1.0f);
 }
 
-void draw(GLuint vertexBuffer, GLuint colorBuffer, int vertexCount, GLenum method) {
+void draw(GLuint vao, GLuint vertexBuffer, GLuint colorBuffer, int vertexCount, GLenum method) {
+    if (vao) glBindVertexArray(vao);
+
     // 1st attribute buffer : vertices
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);

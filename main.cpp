@@ -8,8 +8,8 @@
 #include "settings.h"
 #include "game/game.h"
 #include "scene/scene.h"
-#include "game/ground.h"
-#include "game/bird.h"
+#define GLT_IMPLEMENTATION
+#include "text/gltext.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -48,6 +48,9 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    // GLText initialization
+    //gltInit();
+
     // Get version info
     logVersionInfo();
 
@@ -64,10 +67,16 @@ int main(int argc, char **argv) {
     // Only during the initialisation
     GLint MatrixID = glGetUniformLocation(shaders, "MVP");
 
-    scene = new Scene(MatrixID);
+    scene = new Scene(vao, MatrixID);
     game = new Game(scene);
 
     game->start();
+
+    // Initialize glText
+    gltInit();
+
+    // Create score text
+    GLTtext *scoreText = gltCreateText();
 
     do {
         // Applu shaders
@@ -82,8 +91,12 @@ int main(int argc, char **argv) {
             game->jump();
         }
 
-        //draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount);
         scene->draw();
+
+        gltSetText(scoreText, "Hello World!");
+        gltBeginDraw();
+        gltDrawText2D(scoreText, .0f, .0f, 20.0f);
+        gltEndDraw();
 
         // Swap buffers
         glfwSwapBuffers(window);

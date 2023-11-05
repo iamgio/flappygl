@@ -11,7 +11,8 @@
 // Orthographic projection
 static glm::mat4 projection;
 
-Scene::Scene(GLint mvpUniformID) {
+Scene::Scene(GLuint vao, GLint mvpUniformID) {
+    this->vao = vao;
     this->shapeAmount = 0;
     this->mvpUniformID = mvpUniformID;
     // [-1,1] -> [0,SIZE] mapping
@@ -49,7 +50,7 @@ void Scene::draw() {
     for (Shape shape : this->shapes) {
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
         updateMVP(mvp, this->mvpUniformID);
-        ::draw(shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
+        ::draw(this->vao, shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
     }
 }
 
