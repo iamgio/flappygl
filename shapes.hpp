@@ -2,7 +2,12 @@
 #include <vector>
 #include "shape.hpp"
 
+#ifndef FLAPPYGL_SHAPES_H
+#define FLAPPYGL_SHAPES_H
+
 #define PI 3.14159
+
+#define SQRT2 1.4142
 
 struct Point {
     float x, y, z;
@@ -17,3 +22,5 @@ Shape generateHeart(float cx, float cy, int numTriangles);
 
 
 Shape generateMoon(float cx, float cy, int numTriangles);
+
+#endif

@@ -6,8 +6,11 @@ class BoundingBox {
 private:
     float width;
     float height;
+    bool centerX;
+    bool centerY;
 public:
     BoundingBox(float width, float height);
+    BoundingBox(float width, float height, bool centerX, bool centerY);
     float getWidth();
     float getHeight();
 

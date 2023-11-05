@@ -13,7 +13,7 @@
 
 Shape createBirdShape() {
     glm::vec3 color = glm::vec3(0.5, 0.3, 0.2);
-    return generateRectangle(0, 0,
+    return generateRectangle(-BIRD_SIZE / 2.0f, -BIRD_SIZE / 2.0f,
                              BIRD_SIZE, BIRD_SIZE,
                              color, color,
                              color, color);
@@ -33,7 +33,7 @@ Shape createPipeShape(float height) {
     glm::vec3 colorTop = glm::vec3(PIPE_COLOR_TOP);
     glm::vec3 colorBottom = glm::vec3(PIPE_COLOR_BOTTOM);
     return generateRectangle(
-            0, 0,
+            -PIPE_WIDTH / 2.0f, 0,
             PIPE_WIDTH, height,
             colorBottom, colorBottom,
             colorTop, colorTop);
