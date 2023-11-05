@@ -4,7 +4,6 @@
 
 #include "gameobject.h"
 #include "../scene/scene_shapes.h"
-#include "../shapes.hpp"
 
 #define TYPE_BIRD 0
 #define BIRD_SIZE 5

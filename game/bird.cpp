@@ -1,5 +1,6 @@
-#include <iostream>
 #include "bird.h"
+
+#define BBOX_SIZE_FACTOR 1.2
 
 #define GRAVITY_Y -.015f
 #define JUMP_Y .45f
@@ -10,8 +11,7 @@
 static glm::vec3 gravityForce = glm::vec3(.0f, GRAVITY_Y, .0f);
 static glm::vec3 jumpForce = glm::vec3(.0f, JUMP_Y, .0f);
 
-// SQRT2 uses the circular area as a bounding box
-Bird::Bird(): GameObject(TYPE_BIRD, BIRD_X, BIRD_Y, new BoundingBox(BIRD_SIZE * SQRT2, BIRD_SIZE * SQRT2, true, true)) {
+Bird::Bird(): GameObject(TYPE_BIRD, BIRD_X, BIRD_Y, new BoundingBox(BIRD_SIZE * BBOX_SIZE_FACTOR, BIRD_SIZE * BBOX_SIZE_FACTOR, true, true)) {
 
 }
 
