@@ -1,11 +1,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include "scene.h"
-#include "scene_shapes.h"
-#include "../gl.hpp"
+#include "../gl.h"
 #include "../shapes.hpp"
-#include "../mvp.h"
 #include "../settings.h"
+#include "../glm.h"
 
 #define BACKGROUND_COLOR 0.58f, 0.91f, 0.96f
 

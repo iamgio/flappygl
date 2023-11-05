@@ -1,8 +1,10 @@
-#ifndef FLAPPYGL_MVP_H
-#define FLAPPYGL_MVP_H
+#ifndef FLAPPYGL_GLM_H
+#define FLAPPYGL_GLM_H
 
 #include <glm/glm.hpp>
 #include "shape.hpp"
+
+bool isVecEmpty(glm::vec3 vec);
 
 glm::mat4 getMVPMatrix(Shape *shape, glm::mat4 projection);
 

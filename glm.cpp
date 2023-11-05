@@ -1,6 +1,9 @@
 #include <glm/gtc/matrix_transform.hpp>
-#include "mvp.h"
-#include "glm.hpp"
+#include "glm.h"
+
+bool isVecEmpty(glm::vec3 vec) {
+    return !(vec.x || vec.y || vec.z);
+}
 
 glm::mat4 getMVPMatrix(Shape *shape, glm::mat4 projection) {
     // Transformations

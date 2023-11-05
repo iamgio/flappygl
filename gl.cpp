@@ -1,6 +1,6 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-#include "gl.hpp"
+#include "gl.h"
 
 void backgroundColor(float r, float g, float b) {
     glClearColor(r, g, b, 1.0f);

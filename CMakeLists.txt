@@ -21,10 +21,9 @@ add_executable(${PROJECT_NAME} main.cpp
         shaders.hpp shaders.cpp
         shapes.hpp shapes.cpp
         shape.hpp
-        gl.hpp gl.cpp
-        mvp.h mvp.cpp
+        gl.h gl.cpp
         window.hpp window.cpp
-        glm.hpp
+        glm.cpp glm.h
         scene/scene.h scene/scene.cpp
         game/game.h game/game.cpp
         scene/scene_shapes.cpp scene/scene_shapes.h
