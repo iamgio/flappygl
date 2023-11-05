@@ -1,7 +1,8 @@
 #ifndef FLAPPYGL_TEXT_H
 #define FLAPPYGL_TEXT_H
 
-#include "gltext.h"
+#define GLT_IMPLEMENTATION
+#include "../lib/gltext.h"
 
 class Text {
 private:

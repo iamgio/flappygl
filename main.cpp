@@ -8,8 +8,6 @@
 #include "settings.h"
 #include "game/game.h"
 #include "scene/scene.h"
-#define GLT_IMPLEMENTATION
-#include "text/gltext.h"
 #include "text/text.h"
 
 #define WIN_WIDTH 1100

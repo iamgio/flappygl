@@ -6,7 +6,7 @@
 #include "../shape.h"
 #include "../settings.h"
 #define GLT_IMPLEMENTATION
-#include "../text/gltext.h"
+#include "../lib/gltext.h"
 
 // Scene height is fixed, scene width is calculated to maintain the aspect ratio
 #define SCENE_HEIGHT 100
