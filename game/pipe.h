@@ -21,7 +21,7 @@ public:
     Pipe(int type, float height);
 
     Shape createShape(Scene *scene) {
-        return createPipeShape(height);
+        return createPipeShape(type, height);
     }
 
     void update();

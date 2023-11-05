@@ -29,11 +29,11 @@ Shape createGroundShape() {
             colorTop, colorTop);
 }
 
-Shape createPipeShape(float height) {
+Shape createPipeShape(int type, float height) {
     glm::vec3 colorTop = glm::vec3(PIPE_COLOR_TOP);
     glm::vec3 colorBottom = glm::vec3(PIPE_COLOR_BOTTOM);
     return generateRectangle(
-            -PIPE_WIDTH / 2.0f, 0,
+            -PIPE_WIDTH / 2.0f, type == SKY_PIPE ? -height : 0,
             PIPE_WIDTH, height,
             colorBottom, colorBottom,
             colorTop, colorTop);

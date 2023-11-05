@@ -6,6 +6,6 @@
 
 Shape createBirdShape();
 Shape createGroundShape();
-Shape createPipeShape(float height);
+Shape createPipeShape(int type, float height);
 
 #endif

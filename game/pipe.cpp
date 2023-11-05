@@ -6,7 +6,7 @@
 
 Pipe::Pipe(int type, float height): GameObject(TYPE_PIPE,
         SCENE_WIDTH + PIPE_WIDTH,
-        type ? GROUND_HEIGHT : SCENE_HEIGHT - height /*TODO when flipped*/,
+        type ? GROUND_HEIGHT : SCENE_HEIGHT - height,
         new BoundingBox(PIPE_WIDTH, height, true, false)) {
 
     this->type = type;
@@ -14,9 +14,7 @@ Pipe::Pipe(int type, float height): GameObject(TYPE_PIPE,
     this->velocity = glm::vec3(SPEED_X, .0f, .0f);
 
     if (type == SKY_PIPE) {
-        // TODO fix collisions when flipped
-        //this->x += PIPE_WIDTH;
-        //this->rotation = 180; // Vertically flipped
+        this->rotation = 180; // Vertically flipped
     }
 }
 
