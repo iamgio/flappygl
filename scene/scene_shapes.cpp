@@ -12,7 +12,7 @@
 #define PIPE_COLOR_BOTTOM 0.37f, 0.53f, 0.23f
 
 #define PIPE_TOP_WIDTH_OFFSET 2
-#define PIPE_TOP_HEIGHT 2
+#define PIPE_TOP_HEIGHT 5
 
 
 Shape createBirdShape() {
