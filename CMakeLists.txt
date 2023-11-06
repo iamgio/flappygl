@@ -46,8 +46,10 @@ add_executable(${PROJECT_NAME} main.cpp
         shape.cpp
         game/scoreincreaser.h
         lib/gltext.h
+        lib/hermite.h
         text/text.cpp
         text/text.h
+        lib/hermite.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw freetype ${GL_LIB})

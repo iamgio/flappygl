@@ -18,6 +18,7 @@ typedef struct {
     float rotationAngle;
     //glm::vec3 rotationAxis;
     GLenum method;
+    std::vector<glm::vec3> CP;
 } Shape;
 
 void freeShape(Shape shape);

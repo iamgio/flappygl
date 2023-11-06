@@ -10,10 +10,6 @@ Pipe::Pipe(int type, float height): GameObject(TYPE_PIPE,
     this->type = type;
     this->height = height;
     this->velocity = glm::vec3(PIPE_SPEED_X, .0f, .0f);
-
-    if (type == SKY_PIPE) {
-        this->rotation = 180; // Vertically flipped
-    }
 }
 
 void Pipe::update() {

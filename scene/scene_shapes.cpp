@@ -10,6 +10,7 @@
 
 #define PIPE_COLOR_TOP 0.4f, 0.67f, 0.35f
 #define PIPE_COLOR_BOTTOM 0.37f, 0.53f, 0.23f
+#define PIPE_COLOR_RIGHT 0.1f, 0.25f, 0.1f
 
 #define PIPE_TOP_WIDTH_OFFSET 2
 #define PIPE_TOP_HEIGHT 5
@@ -36,20 +37,21 @@ Shape createGroundShape() {
 Shape createPipeShape(int type, float height) {
     glm::vec3 colorTop = glm::vec3(PIPE_COLOR_TOP);
     glm::vec3 colorBottom = glm::vec3(PIPE_COLOR_BOTTOM);
+    glm::vec3 colorRight = glm::vec3(PIPE_COLOR_RIGHT);
 
     // The base (big rectangle) part
     Shape base = generateRectangle(
             -PIPE_WIDTH / 2.0f, type == SKY_PIPE ? -height : 0,
             PIPE_WIDTH, height - PIPE_TOP_HEIGHT,
-            colorBottom, colorBottom,
-            colorTop, colorTop);
+            colorBottom, colorRight,
+            colorTop, colorRight);
 
     // The end (small rectangle) part
     Shape top = generateRectangle(
             -(PIPE_WIDTH + PIPE_TOP_WIDTH_OFFSET) / 2.0f, (type == SKY_PIPE ? 0 : height) - PIPE_TOP_HEIGHT,
             PIPE_WIDTH + 2, PIPE_TOP_HEIGHT,
-            colorBottom, colorBottom,
-            colorTop, colorTop);
+            colorBottom, colorRight,
+            colorTop, colorRight);
 
     // Merge parts
 
@@ -58,6 +60,11 @@ Shape createPipeShape(int type, float height) {
 
     top.vertices.insert(top.vertices.end(), base.vertices.begin(), base.vertices.end());
     top.colors.insert(top.colors.end(), base.colors.begin(), base.colors.end());
+
+    if (type == SKY_PIPE) {
+        // Flip vertically
+        top.scale = glm::vec3(1, -1, 1);
+    }
 
     return top;
 }
