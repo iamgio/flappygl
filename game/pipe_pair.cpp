@@ -1,11 +1,10 @@
-#include <iostream>
 #include "pipe_pair.h"
 #include "../random.h"
 #include "pipe.h"
 #include "scoreincreaser.h"
 
 // Minimum height between the hole and the sky/ground
-#define SAFE_AREA_HEIGHT 10
+#define SAFE_AREA_HEIGHT 15
 
 std::tuple<GameObject*, GameObject*, GameObject*> createPipePair() {
     float groundPipeHeight = randomInt(SAFE_AREA_HEIGHT, SCENE_HEIGHT - SAFE_AREA_HEIGHT - HOLE_HEIGHT - GROUND_HEIGHT);
