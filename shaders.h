@@ -3,6 +3,16 @@
 
 #include <GL/glew.h>
 
-GLuint loadShaders(const char *vertex_file_path, const char *fragment_file_path);
+class Shaders {
+private:
+    GLuint program;
+public:
+    Shaders(GLuint program);
+    GLint getUniform(const char *name);
+    void use();
+    void del();
+};
+
+Shaders loadShaders(const char *vertex_file_path, const char *fragment_file_path);
 
 #endif

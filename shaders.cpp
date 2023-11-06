@@ -2,8 +2,26 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include "shaders.h"
 
-GLuint loadShaders(const char *vertex_file_path, const char *fragment_file_path) {
+
+Shaders::Shaders(GLuint program) {
+    this->program = program;
+}
+
+GLint Shaders::getUniform(const char *name) {
+    return glGetUniformLocation(this->program, name);
+}
+
+void Shaders::use() {
+    glUseProgram(this->program);
+}
+
+void Shaders::del() {
+    glDeleteProgram(this->program);
+}
+
+Shaders loadShaders(const char *vertex_file_path, const char *fragment_file_path) {
     // Create the shaders
     GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
     GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);

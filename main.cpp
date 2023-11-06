@@ -63,11 +63,12 @@ int main(int argc, char **argv) {
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     // Load shaders
-    GLuint shaders = loadShaders("../shaders/vertex.glsl", "../shaders/fragment.glsl");
+    Shaders shaders = loadShaders("../shaders/vertex.glsl", "../shaders/fragment.glsl");
+    //Shaders groundShaders = loadShaders("../shaders/vertex.glsl", "../shaders/fragmentGround.glsl");
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation
-    GLint MatrixID = glGetUniformLocation(shaders, "MVP");
+    GLint MatrixID = shaders.getUniform("MVP");
 
     scene = new Scene(vao, MatrixID);
     game = new Game(scene);
@@ -81,8 +82,8 @@ int main(int argc, char **argv) {
     Text *scoreText = new Text();
 
     do {
-        // Applu shaders
-        glUseProgram(shaders);
+        // Apply shaders
+        shaders.use();
 
         // Clear the screen.
         glClear(GL_COLOR_BUFFER_BIT);
@@ -111,7 +112,7 @@ int main(int argc, char **argv) {
     } while (isAlive(window));
 
     // Cleanup VBO and shader
-    glDeleteProgram(shaders);
+    shaders.del();
     glDeleteVertexArrays(1, &vao);
 
     // Close GL context and any other GLFW resources
