@@ -18,7 +18,7 @@ public:
 
     Shape createShape(Scene *scene) {
         Shape shape = createGroundShape();
-        //shape.fragmentShader = scene->getProgram()->getShader(PROGRAM_GROUND_FRAGMENT_SHADER);
+        shape.fragmentShader = scene->getProgram()->getShader(PROGRAM_GROUND_FRAGMENT_SHADER);
         return shape;
     }
 

@@ -1,5 +1,4 @@
 #include <glm/gtc/matrix_transform.hpp>
-#include <iostream>
 #include "scene.h"
 #include "../gl.h"
 #include "../shapes.h"
@@ -72,7 +71,6 @@ void Scene::draw() {
         // Remove shaders
         program->detachShader(vertex);
         program->detachShader(fragment);
-        //program->link();
     }
 }
 

@@ -70,9 +70,7 @@ int main(int argc, char **argv) {
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
 
     Program program = createProgram();
-    program.attachShader(&vertexShader);
-    program.attachShader(&fragmentShader);
-    program.link();
+    program.init(&vertexShader, &fragmentShader);
 
     program.setShader(PROGRAM_DEFAULT_VERTEX_SHADER, &vertexShader);
     program.setShader(PROGRAM_DEFAULT_FRAGMENT_SHADER, &fragmentShader);

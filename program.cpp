@@ -1,4 +1,3 @@
-#include <iostream>
 #include "program.h"
 
 Program::Program(GLuint program) {
@@ -38,11 +37,11 @@ void Program::setShader(int key, Shader *shader) {
 }
 
 void Program::link() {
-    GLint Result = GL_FALSE;
-    int InfoLogLength;
-
     glLinkProgram(this->program);
 
+    /*
+    GLint Result = GL_FALSE;
+    int InfoLogLength;
     // Check the program
     glGetProgramiv(this->program, GL_LINK_STATUS, &Result);
     glGetProgramiv(this->program, GL_INFO_LOG_LENGTH, &InfoLogLength);
@@ -52,11 +51,21 @@ void Program::link() {
         printf("%s\n", &ProgramErrorMessage[0]);
     }
 
-    /*glDetachShader(ProgramID, VertexShaderID);
+    glDetachShader(ProgramID, VertexShaderID);
     glDetachShader(ProgramID, FragmentShaderID);
 
     glDeleteShader(VertexShaderID);
     glDeleteShader(FragmentShaderID);*/
+}
+
+void Program::init(Shader *vertexShader, Shader *fragmentShader) {
+    attachShader(vertexShader);
+    attachShader(fragmentShader);
+
+    link();
+
+    detachShader(vertexShader);
+    detachShader(fragmentShader);
 }
 
 Program createProgram() {

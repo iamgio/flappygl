@@ -32,6 +32,7 @@ public:
     void setShader(int key, Shader *shader);
 
     void link();
+    void init(Shader *vertexShader, Shader *fragmentShader); // Attaches, links, detaches
 };
 
 Program createProgram();
