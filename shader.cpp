@@ -4,12 +4,17 @@
 #include <sstream>
 #include "shader.h"
 
-Shader::Shader(GLuint shader) {
+Shader::Shader(GLuint shader, GLenum type) {
     this->shader = shader;
+    this->type = type;
 }
 
 GLuint Shader::getID() {
     return this->shader;
+}
+
+GLenum Shader::getType() {
+    return this->type;
 }
 
 void Shader::del() {
@@ -31,7 +36,8 @@ Shader loadShader(const char *path, GLenum type) {
     } else {
         printf("Impossible to open %s.\n", path);
         getchar();
-        return 0;
+        Shader shader(0, type);
+        return shader;
     }
 
     GLint Result = GL_FALSE;
@@ -52,7 +58,8 @@ Shader loadShader(const char *path, GLenum type) {
         printf("%s\n", &VertexShaderErrorMessage[0]);
     }
 
-    return ShaderID;
+    Shader shader(ShaderID, type);
+    return shader;
 }
 
 

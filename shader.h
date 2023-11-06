@@ -6,10 +6,12 @@
 class Shader {
 private:
     GLuint shader;
+    GLenum type;
 public:
-    Shader(GLuint shader);
+    Shader(GLuint shader, GLenum type);
 
     GLuint getID();
+    GLenum getType();
 
     void del();
 };
