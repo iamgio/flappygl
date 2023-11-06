@@ -2,13 +2,14 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
-#include "shaders.h"
 #include "gl.h"
 #include "window.h"
 #include "settings.h"
 #include "game/game.h"
 #include "scene/scene.h"
 #include "text/text.h"
+#include "shader.h"
+#include "program.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -63,12 +64,19 @@ int main(int argc, char **argv) {
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     // Load shaders
-    Shaders shaders = loadShaders("../shaders/vertex.glsl", "../shaders/fragment.glsl");
-    //Shaders groundShaders = loadShaders("../shaders/vertex.glsl", "../shaders/fragmentGround.glsl");
+    Shader vertex = loadShader("../shaders/vertex.glsl", GL_VERTEX_SHADER);
+    Shader fragment = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
+    Program program = createProgram();
+    program.attachShader(&vertex);
+    program.attachShader(&fragment);
+    program.link();
+
+    //Shader groundShaders = loadShader("../shaders/vertex.glsl", "../shaders/fragmentGround.glsl");
+    //defaultShaders = &shaders;
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation
-    GLint MatrixID = shaders.getUniform("MVP");
+    GLint MatrixID = program.getUniform("MVP");
 
     scene = new Scene(vao, MatrixID);
     game = new Game(scene);
@@ -83,7 +91,7 @@ int main(int argc, char **argv) {
 
     do {
         // Apply shaders
-        shaders.use();
+        program.use();
 
         // Clear the screen.
         glClear(GL_COLOR_BUFFER_BIT);
@@ -112,7 +120,7 @@ int main(int argc, char **argv) {
     } while (isAlive(window));
 
     // Cleanup VBO and shader
-    shaders.del();
+    program.del();
     glDeleteVertexArrays(1, &vao);
 
     // Close GL context and any other GLFW resources

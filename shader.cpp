@@ -2,26 +2,63 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "shaders.h"
+#include "shader.h"
 
 
-Shaders::Shaders(GLuint program) {
-    this->program = program;
+Shader::Shader(GLuint shader) {
+    this->shader = shader;
 }
 
-GLint Shaders::getUniform(const char *name) {
-    return glGetUniformLocation(this->program, name);
+GLuint Shader::getID() {
+    return this->shader;
 }
 
-void Shaders::use() {
-    glUseProgram(this->program);
+void Shader::del() {
+    glDeleteShader(this->shader);
 }
 
-void Shaders::del() {
-    glDeleteProgram(this->program);
+Shader loadShader(const char *path, GLenum type) {
+    // Create the shaders
+    GLuint ShaderID = glCreateShader(type);
+
+    // Read the Vertex Shader code from the file
+    std::string ShaderCode;
+    std::ifstream ShaderStream(path, std::ios::in);
+    if (ShaderStream.is_open()) {
+        std::stringstream sstr;
+        sstr << ShaderStream.rdbuf();
+        ShaderCode = sstr.str();
+        ShaderStream.close();
+    } else {
+        printf("Impossible to open %s.\n", path);
+        getchar();
+        return 0;
+    }
+
+    GLint Result = GL_FALSE;
+    int InfoLogLength;
+
+    // Compile Vertex Shader
+    printf("Compiling shader : %s\n", path);
+    char const *VertexSourcePointer = ShaderCode.c_str();
+    glShaderSource(ShaderID, 1, &VertexSourcePointer, nullptr);
+    glCompileShader(ShaderID);
+
+    // Check Vertex Shader
+    glGetShaderiv(ShaderID, GL_COMPILE_STATUS, &Result);
+    glGetShaderiv(ShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+    if (InfoLogLength > 0) {
+        std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
+        glGetShaderInfoLog(ShaderID, InfoLogLength, nullptr, &VertexShaderErrorMessage[0]);
+        printf("%s\n", &VertexShaderErrorMessage[0]);
+    }
+
+    return ShaderID;
 }
 
-Shaders loadShaders(const char *vertex_file_path, const char *fragment_file_path) {
+
+/*
+Program loadShaders(const char *vertex_file_path, const char *fragment_file_path) {
     // Create the shaders
     GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
     GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
@@ -107,3 +144,4 @@ Shaders loadShaders(const char *vertex_file_path, const char *fragment_file_path
 
     return ProgramID;
 }
+*/

@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include <vector>
 #include <glm/glm.hpp>
+#include "shader.h"
 
 typedef struct {
     GLuint verticesVbo;
@@ -16,6 +17,7 @@ typedef struct {
     glm::vec3 translation;
     glm::vec3 scale;
     float rotationAngle;
+    //Shaders *shaders;
     //glm::vec3 rotationAxis;
     GLenum method;
     std::vector<glm::vec3> CP;
