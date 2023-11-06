@@ -97,8 +97,12 @@ int main(int argc, char **argv) {
 
         scoreText->setText(("Score: " + std::to_string(game->getScore())).c_str());
 
+        // Draw score text, centered
         gltBeginDraw();
-        gltDrawText2DAligned(scoreText->text, WIN_WIDTH, .0f, game->hasEnded() ? SCORE_FONT_SCALE_ENDED : SCORE_FONT_SCALE_IN_GAME, GLT_CENTER, GLT_TOP);
+        gltDrawText2DAligned(scoreText->text,
+                             WIN_WIDTH, .0f,
+                             game->hasEnded() ? SCORE_FONT_SCALE_ENDED : SCORE_FONT_SCALE_IN_GAME,
+                             GLT_CENTER, GLT_TOP);
         gltEndDraw();
 
         // Swap buffers

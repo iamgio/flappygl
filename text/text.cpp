@@ -1,9 +1,10 @@
 #define GLT_IMPLEMENTATION
+#define GLT_MANUAL_VIEWPORT
+#include "../lib/gltext.h"
 #include "text.h"
 
 Text::Text() {
     this->text = gltCreateText();
-    //setColor(1.0f, 1.0f, 1.0f);
 }
 
 void Text::setColor(float r, float g, float b) {
@@ -14,11 +15,11 @@ void Text::setText(const char *string) {
     gltSetText(this->text, string);
 }
 
-void Text::draw(float x, float y, float scale) {
+/*void Text::draw(float x, float y, float scale) {
     gltBeginDraw();
-    gltDrawText2D(this->text, .0f, .0f, 10.0f);
+    gltDrawText2D(text, x, y, scale);
     gltEndDraw();
-}
+}*/
 
 void Text::del() {
     gltDeleteText(this->text);

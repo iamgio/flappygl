@@ -8,12 +8,12 @@ class Text {
 private:
 
 public:
-    GLTtext *text;
     Text();
 
+    GLTtext *text;
     void setColor(float r, float g, float b);
     void setText(const char *string);
-    void draw(float x, float y, float scale);
+    //void draw(float x, float y, float scale);
     void del();
 };
 
