@@ -6,7 +6,10 @@ out vec3 color;
 in vec3 fragmentColor;
 
 void main() {
-    // Output color = color specified in the vertex shader,
-    // interpolated between all 3 surrounding vertices
-    color = fragmentColor;
+    // Changes ground color interpolation
+    if (fragmentColor.z > 0.45) {
+        color = vec3(0.7f + fragmentColor.z / 4, 0.87f, fragmentColor.z);
+    } else {
+        color = fragmentColor;
+    }
 }

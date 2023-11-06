@@ -5,8 +5,8 @@
 #include "../game/pipe.h"
 #include "../game/bird.h"
 
-#define GROUND_COLOR_TOP 0.92f, 0.87f, 0.71f
-#define GROUND_COLOR_BOTTOM 0.56f, 0.81f, 0.3f
+#define GROUND_COLOR_TOP 0.5f, 0.7f, 0.3f
+#define GROUND_COLOR_BOTTOM 0.92f, 0.87f, 0.71f
 
 #define PIPE_COLOR_TOP 0.4f, 0.67f, 0.35f
 #define PIPE_COLOR_BOTTOM 0.37f, 0.53f, 0.23f
@@ -30,8 +30,8 @@ Shape createGroundShape() {
     return generateRectangle(
             0, 0,
             SCENE_WIDTH, GROUND_HEIGHT,
-            colorBottom, colorBottom,
-            colorTop, colorTop);
+            colorTop, colorTop,
+            colorBottom, colorBottom);
 }
 
 Shape createPipeShape(int type, float height) {
