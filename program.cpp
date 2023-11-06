@@ -29,6 +29,22 @@ void Program::detachShader(Shader *shader) {
     glDetachShader(this->program, shader->getID());
 }
 
+Shader *Program::getDefaultVertexShader() {
+    return this->defaultVertexShader;
+}
+
+void Program::setDefaultVertexShader(Shader *vertexShader) {
+    this->defaultVertexShader = vertexShader;
+}
+
+Shader *Program::getDefaultFragmentShader() {
+    return this->defaultFragmentShader;
+}
+
+void Program::setDefaultFragmentShader(Shader *fragmentShader) {
+    this->defaultFragmentShader = fragmentShader;
+}
+
 void Program::link() {
     GLint Result = GL_FALSE;
     int InfoLogLength;
@@ -52,10 +68,5 @@ void Program::link() {
 }
 
 Program createProgram() {
-    // Link the program
-    printf("Linking program\n");
-    GLuint ProgramID = glCreateProgram();
-    return ProgramID;
-
-
+    return glCreateProgram();
 }

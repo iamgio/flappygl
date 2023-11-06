@@ -11,7 +11,8 @@
 // Orthographic projection
 static glm::mat4 projection;
 
-Scene::Scene(GLuint vao, GLint mvpUniformID) {
+Scene::Scene(Program *program, GLuint vao, GLint mvpUniformID) {
+    this->program = program;
     this->vao = vao;
     this->shapeAmount = 0;
     this->mvpUniformID = mvpUniformID;
@@ -48,9 +49,25 @@ void Scene::removeShape(int index) {
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {
+        // Find the shaders to use
+        Shader *vertex = shape.vertexShader ? shape.vertexShader : program->getDefaultVertexShader();
+        Shader *fragment = shape.fragmentShader ? shape.fragmentShader : program->getDefaultFragmentShader();
+
+        // Use the shaders
+        program->attachShader(vertex);
+        program->attachShader(fragment);
+        program->link();
+
+        // Get the MVP matrix
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
         updateMVP(mvp, this->mvpUniformID);
+
+        // Draw the shape
         ::draw(this->vao, shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
+
+        // Remove shaders
+        program->detachShader(vertex);
+        program->detachShader(fragment);
     }
 }
 

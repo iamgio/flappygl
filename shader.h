@@ -14,9 +14,6 @@ public:
     void del();
 };
 
-// The default shaders to use, if another is not specified for a Shape
-// extern Shader *defaultShaders;
-
 Shader loadShader(const char *path, GLenum type);
 
 #endif

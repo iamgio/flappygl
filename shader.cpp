@@ -4,7 +4,6 @@
 #include <sstream>
 #include "shader.h"
 
-
 Shader::Shader(GLuint shader) {
     this->shader = shader;
 }

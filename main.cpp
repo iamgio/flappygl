@@ -64,21 +64,23 @@ int main(int argc, char **argv) {
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     // Load shaders
-    Shader vertex = loadShader("../shaders/vertex.glsl", GL_VERTEX_SHADER);
-    Shader fragment = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
+    Shader vertexShader = loadShader("../shaders/vertex.glsl", GL_VERTEX_SHADER);
+    Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
+    Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
+
     Program program = createProgram();
-    program.attachShader(&vertex);
-    program.attachShader(&fragment);
+    program.attachShader(&vertexShader);
+    program.attachShader(&fragmentShader);
     program.link();
 
-    //Shader groundShaders = loadShader("../shaders/vertex.glsl", "../shaders/fragmentGround.glsl");
-    //defaultShaders = &shaders;
+    program.setDefaultVertexShader(&vertexShader);
+    program.setDefaultFragmentShader(&fragmentShader);
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation
     GLint MatrixID = program.getUniform("MVP");
 
-    scene = new Scene(vao, MatrixID);
+    scene = new Scene(&program, vao, MatrixID);
     game = new Game(scene);
 
     game->start();

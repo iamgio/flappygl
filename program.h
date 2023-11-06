@@ -7,6 +7,9 @@
 class Program {
 private:
     GLuint program;
+    // The default shaders to use, if another is not specified for a Shape
+    Shader *defaultVertexShader;
+    Shader *defaultFragmentShader;
 public:
     Program(GLuint program);
 
@@ -19,6 +22,12 @@ public:
 
     void attachShader(Shader *shader);
     void detachShader(Shader *shader);
+
+    Shader *getDefaultVertexShader();
+    void setDefaultVertexShader(Shader *vertexShader);
+
+    Shader *getDefaultFragmentShader();
+    void setDefaultFragmentShader(Shader *fragmentShader);
 
     void link();
 };
