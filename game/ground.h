@@ -4,6 +4,8 @@
 #include "gameobject.h"
 #include "../scene/scene_shapes.h"
 
+#define PROGRAM_GROUND_FRAGMENT_SHADER 0x0003
+
 #define TYPE_GROUND 1
 #define GROUND_WIDTH 1000
 #define GROUND_HEIGHT 10
@@ -15,7 +17,9 @@ public:
     }
 
     Shape createShape(Scene *scene) {
-        return createGroundShape();
+        Shape shape = createGroundShape();
+        //shape.fragmentShader = scene->getProgram()->getShader(PROGRAM_GROUND_FRAGMENT_SHADER);
+        return shape;
     }
 
     void update() {

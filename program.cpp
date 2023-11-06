@@ -29,20 +29,12 @@ void Program::detachShader(Shader *shader) {
     glDetachShader(this->program, shader->getID());
 }
 
-Shader *Program::getDefaultVertexShader() {
-    return this->defaultVertexShader;
+Shader *Program::getShader(int key) {
+    return this->shaders.at(key);
 }
 
-void Program::setDefaultVertexShader(Shader *vertexShader) {
-    this->defaultVertexShader = vertexShader;
-}
-
-Shader *Program::getDefaultFragmentShader() {
-    return this->defaultFragmentShader;
-}
-
-void Program::setDefaultFragmentShader(Shader *fragmentShader) {
-    this->defaultFragmentShader = fragmentShader;
+void Program::setShader(int key, Shader *shader) {
+    this->shaders.insert(ShaderMap::value_type(key, shader));
 }
 
 void Program::link() {

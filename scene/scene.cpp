@@ -25,6 +25,10 @@ Scene::Scene(Program *program, GLuint vao, GLint mvpUniformID) {
     backgroundColor(BACKGROUND_COLOR);
 }
 
+Program *Scene::getProgram() {
+    return this->program;
+}
+
 void Scene::addShape(Shape shape) {
     const auto vecSize = sizeof(glm::vec3) * sizeof(GLfloat);
     if (!shape.verticesVbo) {
@@ -50,8 +54,8 @@ void Scene::removeShape(int index) {
 void Scene::draw() {
     for (Shape shape : this->shapes) {
         // Find the shaders to use
-        Shader *vertex = shape.vertexShader ? shape.vertexShader : program->getDefaultVertexShader();
-        Shader *fragment = shape.fragmentShader ? shape.fragmentShader : program->getDefaultFragmentShader();
+        Shader *vertex = shape.vertexShader ? shape.vertexShader : program->getShader(PROGRAM_DEFAULT_VERTEX_SHADER);
+        Shader *fragment = shape.fragmentShader ? shape.fragmentShader : program->getShader(PROGRAM_DEFAULT_FRAGMENT_SHADER);
 
         // Use the shaders
         program->attachShader(vertex);
@@ -68,6 +72,7 @@ void Scene::draw() {
         // Remove shaders
         program->detachShader(vertex);
         program->detachShader(fragment);
+        //program->link();
     }
 }
 

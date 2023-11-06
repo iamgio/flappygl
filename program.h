@@ -2,14 +2,19 @@
 #define FLAPPYGL_PROGRAM_H
 
 #include <GL/glew.h>
+#include <map>
 #include "shader.h"
+
+// The keys of the default shaders to use, if another is not specified for a Shape
+#define PROGRAM_DEFAULT_VERTEX_SHADER 0x0001
+#define PROGRAM_DEFAULT_FRAGMENT_SHADER 0x0002
+
+typedef std::map<int, Shader*> ShaderMap;
 
 class Program {
 private:
     GLuint program;
-    // The default shaders to use, if another is not specified for a Shape
-    Shader *defaultVertexShader;
-    Shader *defaultFragmentShader;
+    ShaderMap shaders;
 public:
     Program(GLuint program);
 
@@ -23,11 +28,8 @@ public:
     void attachShader(Shader *shader);
     void detachShader(Shader *shader);
 
-    Shader *getDefaultVertexShader();
-    void setDefaultVertexShader(Shader *vertexShader);
-
-    Shader *getDefaultFragmentShader();
-    void setDefaultFragmentShader(Shader *fragmentShader);
+    Shader *getShader(int key);
+    void setShader(int key, Shader *shader);
 
     void link();
 };

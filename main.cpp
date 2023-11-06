@@ -10,6 +10,7 @@
 #include "text/text.h"
 #include "shader.h"
 #include "program.h"
+#include "game/ground.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -73,8 +74,9 @@ int main(int argc, char **argv) {
     program.attachShader(&fragmentShader);
     program.link();
 
-    program.setDefaultVertexShader(&vertexShader);
-    program.setDefaultFragmentShader(&fragmentShader);
+    program.setShader(PROGRAM_DEFAULT_VERTEX_SHADER, &vertexShader);
+    program.setShader(PROGRAM_DEFAULT_FRAGMENT_SHADER, &fragmentShader);
+    program.setShader(PROGRAM_GROUND_FRAGMENT_SHADER, &groundFragmentShader);
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation

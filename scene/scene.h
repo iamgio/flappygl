@@ -22,9 +22,14 @@ private:
     GLint mvpUniformID;
 public:
     Scene(Program *program, GLuint vao, GLint mvpUniformID);
+
+    Program *getProgram();
+
     void addShape(Shape shape);
     void removeShape(int index);
+
     void draw();
+
     int getShapesAmount();
     Shape *getShape(int index);
 };
