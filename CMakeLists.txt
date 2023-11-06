@@ -45,7 +45,7 @@ add_executable(${PROJECT_NAME} main.cpp
         random.h
         shape.cpp
         game/scoreincreaser.h
-        text/gltext.h
+        lib/gltext.h
         text/text.cpp
         text/text.h
 )
