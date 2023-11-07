@@ -37,4 +37,6 @@ public:
 
 Program createProgram();
 
+Program createProgram(Shader *vertexShader, Shader *fragmentShader);
+
 #endif

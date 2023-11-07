@@ -70,11 +70,8 @@ int main(int argc, char **argv) {
     Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
 
-    Program defaultProgram = createProgram();
-    defaultProgram.init(&vertexShader, &fragmentShader);
-
-    Program groundProgram = createProgram();
-    groundProgram.init(&vertexShader, &groundFragmentShader);
+    Program defaultProgram = createProgram(&vertexShader, &fragmentShader);
+    Program groundProgram = createProgram(&vertexShader, &groundFragmentShader);
 
     Programs *programs = new Programs();
     programs->setProgram(PROGRAM_DEFAULT, &defaultProgram);
