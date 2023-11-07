@@ -21,8 +21,9 @@ find_library(GL_LIB opengl)
 add_definitions(-DGLEW_STATIC)
 
 add_executable(${PROJECT_NAME} main.cpp
-        shader.h shader.cpp
-        program.h program.cpp
+        shader/shader.h shader/shader.cpp
+        shader/program.h shader/program.cpp
+        shader/programs.cpp shader/programs.h
         shapes.h shapes.cpp
         shape.h
         gl.h gl.cpp
@@ -51,8 +52,6 @@ add_executable(${PROJECT_NAME} main.cpp
         text/text.cpp
         text/text.h
         lib/hermite.h
-        programs.cpp
-        programs.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw freetype ${GL_LIB})

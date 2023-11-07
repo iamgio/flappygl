@@ -8,10 +8,10 @@
 #include "game/game.h"
 #include "scene/scene.h"
 #include "text/text.h"
-#include "shader.h"
-#include "program.h"
+#include "shader/shader.h"
+#include "shader/program.h"
 #include "game/ground.h"
-#include "programs.h"
+#include "shader/programs.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
