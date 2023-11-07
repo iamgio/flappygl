@@ -10,8 +10,8 @@
 // Orthographic projection
 static glm::mat4 projection;
 
-Scene::Scene(Program *program, GLuint vao, GLint mvpUniformID) {
-    this->program = program;
+Scene::Scene(Programs *programs, GLuint vao, GLint mvpUniformID) {
+    this->programs = programs;
     this->vao = vao;
     this->shapeAmount = 0;
     this->mvpUniformID = mvpUniformID;
@@ -24,8 +24,8 @@ Scene::Scene(Program *program, GLuint vao, GLint mvpUniformID) {
     backgroundColor(BACKGROUND_COLOR);
 }
 
-Program *Scene::getProgram() {
-    return this->program;
+Programs *Scene::getPrograms() {
+    return this->programs;
 }
 
 void Scene::addShape(Shape shape) {
@@ -49,17 +49,16 @@ void Scene::removeShape(int index) {
     this->shapes[index] = {};
 }
 
+static Program *lastUsedProgram;
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {
-        // Find the shaders to use
-        Shader *vertex = shape.vertexShader ? shape.vertexShader : program->getShader(PROGRAM_DEFAULT_VERTEX_SHADER);
-        Shader *fragment = shape.fragmentShader ? shape.fragmentShader : program->getShader(PROGRAM_DEFAULT_FRAGMENT_SHADER);
-
-        // Use the shaders
-        program->attachShader(vertex);
-        program->attachShader(fragment);
-        program->link();
+        // Find the shader program to use
+        Program *program = shape.shaderProgram ? shape.shaderProgram : programs->getProgram(PROGRAM_DEFAULT);
+        if (program != lastUsedProgram) {
+            program->use();
+            lastUsedProgram = program;
+        }
 
         // Get the MVP matrix
         glm::mat4 mvp = getMVPMatrix(&shape, projection);
@@ -67,10 +66,6 @@ void Scene::draw() {
 
         // Draw the shape
         ::draw(this->vao, shape.verticesVbo, shape.colorsVbo, shape.verticesAmount, shape.method);
-
-        // Remove shaders
-        program->detachShader(vertex);
-        program->detachShader(fragment);
     }
 }
 

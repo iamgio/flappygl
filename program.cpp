@@ -21,6 +21,7 @@ void Program::del() {
 }
 
 void Program::attachShader(Shader *shader) {
+    // TODO fix lag over time
     glAttachShader(this->program, shader->getID());
 }
 
@@ -66,6 +67,9 @@ void Program::init(Shader *vertexShader, Shader *fragmentShader) {
 
     detachShader(vertexShader);
     detachShader(fragmentShader);
+
+    setShader(PROGRAM_DEFAULT_VERTEX_SHADER, vertexShader);
+    setShader(PROGRAM_DEFAULT_FRAGMENT_SHADER, fragmentShader);
 }
 
 Program createProgram() {

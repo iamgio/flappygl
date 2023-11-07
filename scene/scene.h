@@ -8,6 +8,7 @@
 #define GLT_IMPLEMENTATION
 #include "../lib/gltext.h"
 #include "../program.h"
+#include "../programs.h"
 
 // Scene height is fixed, scene width is calculated to maintain the aspect ratio
 #define SCENE_HEIGHT 100
@@ -15,15 +16,15 @@
 
 class Scene {
 private:
-    Program *program;
+    Programs *programs;
     GLuint vao;
     int shapeAmount;
     std::vector<Shape> shapes;
     GLint mvpUniformID;
 public:
-    Scene(Program *program, GLuint vao, GLint mvpUniformID);
+    Scene(Programs *programs, GLuint vao, GLint mvpUniformID);
 
-    Program *getProgram();
+    Programs *getPrograms();
 
     void addShape(Shape shape);
     void removeShape(int index);

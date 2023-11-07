@@ -6,6 +6,7 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include "shader.h"
+#include "program.h"
 
 typedef struct {
     GLuint verticesVbo;
@@ -19,8 +20,9 @@ typedef struct {
     float rotationAngle;
     //glm::vec3 rotationAxis;
     GLenum method;
-    Shader *vertexShader;
-    Shader *fragmentShader;
+    //Shader *vertexShader;
+    //Shader *fragmentShader;
+    Program *shaderProgram;
     std::vector<glm::vec3> CP;
 } Shape;
 

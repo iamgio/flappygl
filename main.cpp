@@ -11,6 +11,7 @@
 #include "shader.h"
 #include "program.h"
 #include "game/ground.h"
+#include "programs.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -69,18 +70,21 @@ int main(int argc, char **argv) {
     Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
 
-    Program program = createProgram();
-    program.init(&vertexShader, &fragmentShader);
+    Program defaultProgram = createProgram();
+    defaultProgram.init(&vertexShader, &fragmentShader);
 
-    program.setShader(PROGRAM_DEFAULT_VERTEX_SHADER, &vertexShader);
-    program.setShader(PROGRAM_DEFAULT_FRAGMENT_SHADER, &fragmentShader);
-    program.setShader(PROGRAM_GROUND_FRAGMENT_SHADER, &groundFragmentShader);
+    Program groundProgram = createProgram();
+    groundProgram.init(&vertexShader, &groundFragmentShader);
+
+    Programs *programs = new Programs();
+    programs->setProgram(PROGRAM_DEFAULT, &defaultProgram);
+    programs->setProgram(PROGRAM_GROUND, &groundProgram);
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation
-    GLint MatrixID = program.getUniform("MVP");
+    GLint MatrixID = defaultProgram.getUniform("MVP");
 
-    scene = new Scene(&program, vao, MatrixID);
+    scene = new Scene(programs, vao, MatrixID);
     game = new Game(scene);
 
     game->start();
@@ -93,7 +97,7 @@ int main(int argc, char **argv) {
 
     do {
         // Apply shaders
-        program.use();
+        defaultProgram.use();
 
         // Clear the screen.
         glClear(GL_COLOR_BUFFER_BIT);
@@ -122,7 +126,7 @@ int main(int argc, char **argv) {
     } while (isAlive(window));
 
     // Cleanup VBO and shader
-    program.del();
+    defaultProgram.del();
     glDeleteVertexArrays(1, &vao);
 
     // Close GL context and any other GLFW resources

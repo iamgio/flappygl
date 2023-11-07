@@ -51,6 +51,8 @@ add_executable(${PROJECT_NAME} main.cpp
         text/text.cpp
         text/text.h
         lib/hermite.h
+        programs.cpp
+        programs.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw freetype ${GL_LIB})
