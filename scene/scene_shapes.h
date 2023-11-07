@@ -4,6 +4,7 @@
 #include "../shape.h"
 #include "scene.h"
 
+Shape createBackgroundDetailsShape();
 Shape createBirdShape();
 Shape createGroundShape();
 Shape createPipeShape(int type, float height);

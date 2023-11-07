@@ -6,6 +6,7 @@
 #include "bird.h"
 #include "ground.h"
 #include "scoreincreaser.h"
+#include "background_details.h"
 
 // Time after game end to start a new game
 #define RESTART_TICKS 80
@@ -74,6 +75,7 @@ void Game::start() {
 
     srand(time(NULL));
 
+    this->addObject(new BackgroundDetails());
     this->addObject(new Ground());
     this->addObject(new Bird());
 }

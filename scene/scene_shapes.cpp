@@ -4,6 +4,7 @@
 #include "../shapes.h"
 #include "../game/pipe.h"
 #include "../game/bird.h"
+#include "../game/background_details.h"
 
 #define GROUND_COLOR_TOP 0.5f, 0.7f, 0.3f
 #define GROUND_COLOR_BOTTOM 0.92f, 0.87f, 0.71f
@@ -67,4 +68,15 @@ Shape createPipeShape(int type, float height) {
     }
 
     return top;
+}
+
+Shape createBackgroundDetailsShape() {
+    // TODO
+    glm::vec3 colorTop = glm::vec3(GROUND_COLOR_TOP);
+    glm::vec3 colorBottom = glm::vec3(GROUND_COLOR_BOTTOM);
+    return generateRectangle(
+            0, 0,
+            BACKGROUND_WIDTH, BACKGROUND_HEIGHT,
+            colorTop, colorTop,
+            colorBottom, colorBottom);
 }
