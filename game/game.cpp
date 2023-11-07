@@ -44,11 +44,6 @@ void Game::addDequeuedObject() {
     int index = scene->getShapesAmount();
     object->setShapeIndex(index);
     this->scene->addShape(shape);
-
-#ifdef SHOW_BBOX
-    Shape bbox = createBoundingBoxShape(object);
-    this->scene->addShape(&bbox);
-#endif
 }
 
 void Game::removeDequeuedObject() {
