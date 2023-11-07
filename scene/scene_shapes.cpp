@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../shape.h"
 #include "scene.h"
 #include "../game/ground.h"
@@ -5,6 +6,7 @@
 #include "../game/pipe.h"
 #include "../game/bird.h"
 #include "../game/background_details.h"
+#include "../hermite.h"
 
 #define GROUND_COLOR_TOP 0.5f, 0.7f, 0.3f
 #define GROUND_COLOR_BOTTOM 0.92f, 0.87f, 0.71f
@@ -72,11 +74,27 @@ Shape createPipeShape(int type, float height) {
 
 Shape createBackgroundDetailsShape() {
     // TODO
-    glm::vec3 colorTop = glm::vec3(GROUND_COLOR_TOP);
-    glm::vec3 colorBottom = glm::vec3(GROUND_COLOR_BOTTOM);
-    return generateRectangle(
-            0, 0,
-            BACKGROUND_WIDTH, BACKGROUND_HEIGHT,
-            colorTop, colorTop,
-            colorBottom, colorBottom);
+    glm::vec3 color = glm::vec3(0);
+
+    Shape shape = {.method = GL_LINES};
+
+    float p0x = 30;
+    float p0y = 20;
+    float p1x = 120;
+    float p1y = 60;
+
+    float v0x = 40;
+    float v0y = 120;
+    float v1x = -100;
+    float v1y = -100;
+
+    shape.vertices = hermite(p0x, p0y, p1x, p1y, v0x, v0y, v1x, v1y);
+
+    shape.verticesAmount = shape.vertices.size();
+
+    for (int i = 0; i < shape.verticesAmount; i++) {
+        shape.colors.push_back(color);
+    }
+
+    return shape;
 }
