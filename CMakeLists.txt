@@ -51,6 +51,7 @@ add_executable(${PROJECT_NAME} main.cpp
         text/text.h
         game/background_details.h
         hermite.h
+        hermite.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw freetype ${GL_LIB})

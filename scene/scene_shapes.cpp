@@ -76,19 +76,31 @@ Shape createBackgroundDetailsShape() {
     // TODO
     glm::vec3 color = glm::vec3(0);
 
-    Shape shape = {.method = GL_LINES};
+    Shape shape = {.method = GL_TRIANGLE_FAN};
 
-    float p0x = 30;
+    float p0x = 0;
     float p0y = 20;
     float p1x = 120;
     float p1y = 60;
+    float p2x = 300;
+    float p2y = 30;
 
     float v0x = 40;
     float v0y = 120;
     float v1x = -100;
     float v1y = -100;
+    float v2x = 50;
+    float v2y = 30;
 
-    shape.vertices = hermite(p0x, p0y, p1x, p1y, v0x, v0y, v1x, v1y);
+    auto v1 = hermite3(p0x, p0y, p1x, p1y, p2x, p2y, v0x, v0y, v1x, v1y, v2x, v2y);
+    //auto v2 = hermite(p1x, p1y, p2x, p2y, v1x, v1y, v2x, v2y);
+
+    //v1.insert(v1.end(), v2.begin(), v2.end());
+
+    shape.vertices = v1;
+
+    shape.vertices.push_back(glm::vec3(SCENE_WIDTH, 0, 0));
+    shape.vertices.push_back(glm::vec3(0, 0, 0));
 
     shape.verticesAmount = shape.vertices.size();
 
