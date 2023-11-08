@@ -12,6 +12,7 @@
 #include "shader/program.h"
 #include "game/ground.h"
 #include "shader/programs.h"
+#include "game/background_details.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -69,13 +70,16 @@ int main(int argc, char **argv) {
     Shader vertexShader = loadShader("../shaders/vertex.glsl", GL_VERTEX_SHADER);
     Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
+    Shader mountainsFragmentShader = loadShader("../shaders/fragmentMountains.glsl", GL_FRAGMENT_SHADER);
 
     Program defaultProgram = createProgram(&vertexShader, &fragmentShader);
     Program groundProgram = createProgram(&vertexShader, &groundFragmentShader);
+    Program mountainsProgram = createProgram(&vertexShader, &mountainsFragmentShader);
 
     Programs *programs = new Programs();
     programs->setProgram(PROGRAM_DEFAULT, &defaultProgram);
     programs->setProgram(PROGRAM_GROUND, &groundProgram);
+    programs->setProgram(PROGRAM_BACKGROUND, &mountainsProgram);
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation

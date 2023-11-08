@@ -4,10 +4,9 @@
 #include "gameobject.h"
 #include "../scene/scene_shapes.h"
 
-#define TYPE_BACKGROUND_DETAILS 10
+#define PROGRAM_BACKGROUND 4
 
-#define BACKGROUND_WIDTH SCENE_WIDTH
-#define BACKGROUND_HEIGHT SCENE_HEIGHT
+#define TYPE_BACKGROUND_DETAILS 10
 
 class BackgroundDetails: public GameObject {
 public:
@@ -16,7 +15,9 @@ public:
     }
 
     Shape createShape(Scene *scene) {
-        return createBackgroundDetailsShape();
+        Shape shape = createBackgroundDetailsShape();
+        shape.shaderProgram = scene->getPrograms()->getProgram(PROGRAM_BACKGROUND);
+        return shape;
     }
 
     void update() {
