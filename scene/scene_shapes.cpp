@@ -18,7 +18,7 @@
 #define PIPE_TOP_WIDTH_OFFSET 2
 #define PIPE_TOP_HEIGHT 5
 
-#define BACKGROUND_MOUNTAINS_BASE_HEIGHT 50
+#define BACKGROUND_MOUNTAINS_BASE_HEIGHT 40
 
 
 Shape createBirdShape() {
@@ -77,25 +77,24 @@ Shape createPipeShape(int type, float height) {
 Shape createBackgroundDetailsShape() {
     glm::vec3 color = glm::vec3(0);
 
-    Shape shape = {.method = GL_LINE_LOOP}; // TODO fill
+    Shape shape = {.method = GL_TRIANGLE_FAN};
 
     shape.vertices = hermite5(
             0, BACKGROUND_MOUNTAINS_BASE_HEIGHT,
-            50, BACKGROUND_MOUNTAINS_BASE_HEIGHT - 20,
-            80, BACKGROUND_MOUNTAINS_BASE_HEIGHT + 10,
-            110, BACKGROUND_MOUNTAINS_BASE_HEIGHT - 10,
-            SCENE_WIDTH, BACKGROUND_MOUNTAINS_BASE_HEIGHT + 20,
-            10, 10,
-            20, -20,
-            40, -20,
-            20, 10,
-            30, 5
+            SCENE_WIDTH / 3.0f, BACKGROUND_MOUNTAINS_BASE_HEIGHT - 30,
+            SCENE_WIDTH / 2.0f, BACKGROUND_MOUNTAINS_BASE_HEIGHT + 20,
+            SCENE_WIDTH / 1.5f, BACKGROUND_MOUNTAINS_BASE_HEIGHT - 10,
+            SCENE_WIDTH, BACKGROUND_MOUNTAINS_BASE_HEIGHT,
+            100, 100,
+            -50, 180,
+            50, -50,
+            -100, 300,
+            100, -50
             );
 
-    std::cout<<shape.vertices.back().x<<std::endl;
-
+    // Close the shape
+    shape.vertices.insert(shape.vertices.begin(), glm::vec3(0, 0, 0));
     shape.vertices.push_back(glm::vec3(SCENE_WIDTH, 0, 0));
-    shape.vertices.push_back(glm::vec3(0, 0, 0));
 
     shape.verticesAmount = shape.vertices.size();
 
