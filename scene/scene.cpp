@@ -53,9 +53,11 @@ static Program *lastUsedProgram;
 
 void Scene::draw() {
     for (Shape shape : this->shapes) {
+        if (shape.vertices.empty()) continue;
+
         // Find the shader program to use
         Program *program = shape.shaderProgram ? shape.shaderProgram : programs->getProgram(PROGRAM_DEFAULT);
-        if (program != lastUsedProgram) {
+        if (!lastUsedProgram || program != lastUsedProgram) {
             program->use();
             lastUsedProgram = program;
         }
