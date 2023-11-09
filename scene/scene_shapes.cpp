@@ -18,9 +18,9 @@
 #define PIPE_TOP_WIDTH_OFFSET 2
 #define PIPE_TOP_HEIGHT 5
 
-#define BIRD_BORDER_COLOR 0.74f, 0.31f, 0.0f
-#define BIRD_CENTER_COLOR 0.65, 0.66, 0.15
-#define BIRD_OUTLINE_SIZE 5
+#define BIRD_BORDER_COLOR 0.84f, 0.41f, 0.05f
+#define BIRD_CENTER_COLOR 0.65f, 0.66f, 0.15f
+#define BIRD_BORDER_SIZE 5
 
 #define BACKGROUND_MOUNTAINS_BASE_HEIGHT 40
 
@@ -45,7 +45,7 @@ Shape createBirdShape() {
     shape.verticesAmount = shape.vertices.size();
 
     for (int i = 0; i < shape.verticesAmount; i++) {
-        shape.colors.push_back(i % BIRD_OUTLINE_SIZE ? border : center);
+        shape.colors.push_back(i % BIRD_BORDER_SIZE ? border : center);
     }
 
     return shape;
