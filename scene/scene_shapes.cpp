@@ -20,7 +20,7 @@
 
 #define BIRD_BORDER_COLOR 0.74f, 0.31f, 0.0f
 #define BIRD_CENTER_COLOR 0.65, 0.66, 0.15
-#define BIRD_OUTLINE_SIZE 20
+#define BIRD_OUTLINE_SIZE 5
 
 #define BACKGROUND_MOUNTAINS_BASE_HEIGHT 40
 
@@ -33,17 +33,13 @@ Shape createBirdShape() {
 
     float vertexPos = BIRD_SIZE / 2.0f;
 
-    shape.vertices = hermite5(
+    shape.vertices = hermite3(
             -vertexPos, -vertexPos - 2.0f,
-            0, -vertexPos,
-            vertexPos - 1.0f, 1.0f,
-            0, vertexPos + 1.0f,
-            -vertexPos, -vertexPos - 2.0f,
-            -8, 0,
-            -5, -5,
-            -10, 2,
-            -10, 5,
-            10, -10
+            vertexPos, .0f,
+            -vertexPos, vertexPos,
+            -10, 10,
+            10, 0,
+            -10, -10
     );
 
     shape.verticesAmount = shape.vertices.size();
