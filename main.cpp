@@ -13,6 +13,7 @@
 #include "game/ground.h"
 #include "shader/programs.h"
 #include "game/background_details.h"
+#include "game/bird.h"
 
 #define WIN_WIDTH 1100
 #define WIN_HEIGHT (WIN_WIDTH / ASPECT_RATIO)
@@ -71,15 +72,18 @@ int main(int argc, char **argv) {
     Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
     Shader mountainsFragmentShader = loadShader("../shaders/fragmentMountains.glsl", GL_FRAGMENT_SHADER);
+    Shader birdFragmentShader = loadShader("../shaders/fragmentBird.glsl", GL_FRAGMENT_SHADER);
 
     Program defaultProgram = createProgram(&vertexShader, &fragmentShader);
     Program groundProgram = createProgram(&vertexShader, &groundFragmentShader);
     Program mountainsProgram = createProgram(&vertexShader, &mountainsFragmentShader);
+    Program birdProgram = createProgram(&vertexShader, &birdFragmentShader);
 
     Programs *programs = new Programs();
     programs->setProgram(PROGRAM_DEFAULT, &defaultProgram);
     programs->setProgram(PROGRAM_GROUND, &groundProgram);
     programs->setProgram(PROGRAM_BACKGROUND, &mountainsProgram);
+    programs->setProgram(PROGRAM_BIRD, &birdProgram);
 
     // Get a handle for our "MVP" uniform
     // Only during the initialisation

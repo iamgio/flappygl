@@ -22,11 +22,32 @@
 
 
 Shape createBirdShape() {
-    glm::vec3 color = glm::vec3(0.5, 0.3, 0.2);
-    return generateRectangle(-BIRD_SIZE / 2.0f, -BIRD_SIZE / 2.0f,
-                             BIRD_SIZE, BIRD_SIZE,
-                             color, color,
-                             color, color);
+    glm::vec3 color = glm::vec3(0); // Overridden by shaders
+
+    Shape shape = {.method = GL_TRIANGLE_FAN};
+
+    float vertexPos = BIRD_SIZE / 2.0f;
+
+    shape.vertices = hermite5(
+            -vertexPos, -vertexPos - 2.0f,
+            0, -vertexPos,
+            vertexPos - 1.0f, 1.0f,
+            0, vertexPos + 1.0f,
+            -vertexPos, -vertexPos - 2.0f,
+            -8, 0,
+            -5, -5,
+            -10, 2,
+            -10, 5,
+            10, -10
+    );
+
+    shape.verticesAmount = shape.vertices.size();
+
+    for (int i = 0; i < shape.verticesAmount; i++) {
+        shape.colors.push_back(color);
+    }
+
+    return shape;
 };
 
 Shape createGroundShape() {
@@ -75,7 +96,7 @@ Shape createPipeShape(int type, float height) {
 }
 
 Shape createBackgroundDetailsShape() {
-    glm::vec3 color = glm::vec3(0);
+    glm::vec3 color = glm::vec3(0); // Overridden by shaders
 
     Shape shape = {.method = GL_TRIANGLE_FAN};
 
