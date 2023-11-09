@@ -18,11 +18,16 @@
 #define PIPE_TOP_WIDTH_OFFSET 2
 #define PIPE_TOP_HEIGHT 5
 
+#define BIRD_BORDER_COLOR 0.74f, 0.31f, 0.0f
+#define BIRD_CENTER_COLOR 0.65, 0.66, 0.15
+#define BIRD_OUTLINE_SIZE 20
+
 #define BACKGROUND_MOUNTAINS_BASE_HEIGHT 40
 
 
 Shape createBirdShape() {
-    glm::vec3 color = glm::vec3(0); // Overridden by shaders
+    glm::vec3 border = glm::vec3(BIRD_BORDER_COLOR);
+    glm::vec3 center = glm::vec3(BIRD_CENTER_COLOR);
 
     Shape shape = {.method = GL_TRIANGLE_FAN};
 
@@ -44,7 +49,7 @@ Shape createBirdShape() {
     shape.verticesAmount = shape.vertices.size();
 
     for (int i = 0; i < shape.verticesAmount; i++) {
-        shape.colors.push_back(color);
+        shape.colors.push_back(i % BIRD_OUTLINE_SIZE ? border : center);
     }
 
     return shape;
