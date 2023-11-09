@@ -24,5 +24,7 @@ void main() {
     float t = pow(1.1 - length(position), 3.0);
     vec3 overlay = vec3(1 - exp(-(vec3(t) + vec3(0.5, 0.3, 0.0))));
 
-    color = mix(baseColor, overlay, 0.2);
+    vec3 skyColor = vec3(0.58f, 0.91f, 0.96f);
+
+    color = mix(mix(baseColor, overlay, 0.2), skyColor, .4);
 }
