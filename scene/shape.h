@@ -23,7 +23,6 @@ typedef struct {
     //Shader *vertexShader;
     //Shader *fragmentShader;
     Program *shaderProgram;
-    std::vector<glm::vec3> CP;
 } Shape;
 
 void freeShape(Shape shape);
