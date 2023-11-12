@@ -18,36 +18,30 @@ find_library(GL_LIB opengl)
 add_definitions(-DGLEW_STATIC)
 
 add_executable(${PROJECT_NAME} main.cpp
-        shader/shader.h shader/shader.cpp
-        shader/program.h shader/program.cpp
-        shader/programs.cpp shader/programs.h
-        scene/shapes.h scene/shapes.cpp
-        scene/shape.h scene/shape.cpp
         gl.h gl.cpp
         window.h window.cpp
-        glm.cpp glm.h
-        scene/scene.h scene/scene.cpp
-        game/game.h game/game.cpp
-        scene/scene_shapes.cpp scene/scene_shapes.h
-        game/ground.h
-        game/gameobject.cpp game/gameobject.h
-        collision/boundingbox.cpp
-        collision/boundingbox.h
+        glm.h glm.cpp
         settings.h
-        game/bird.cpp
-        game/bird.h
-        game/pipe.h
-        game/pipe.cpp
-        game/pipe_pair.h
-        game/pipe_pair.cpp
         random.h
+        hermite.h hermite.cpp
+        scene/shape.h scene/shape.cpp
+        shader/shader.h shader/shader.cpp
+        shader/program.h shader/program.cpp
+        shader/programs.h shader/programs.cpp
+        scene/shapes.h scene/shapes.cpp
+        scene/scene.h scene/scene.cpp
+        scene/scene_shapes.h scene/scene_shapes.cpp
+        game/game.h game/game.cpp
+        game/ground.h
+        game/gameobject.h game/gameobject.cpp
+        game/bird.h game/bird.cpp
+        game/pipe.h game/pipe.cpp
+        game/pipe_pair.h game/pipe_pair.cpp
         game/scoreincreaser.h
-        lib/gltext.h
-        text/text.cpp
-        text/text.h
         game/background_details.h
-        hermite.h
-        hermite.cpp
+        collision/boundingbox.h collision/boundingbox.cpp
+        text/text.h text/text.cpp
+        lib/gltext.h
 )
 
 target_link_libraries(${PROJECT_NAME} glew glfw ${GL_LIB})
