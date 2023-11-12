@@ -5,8 +5,8 @@
 #include <GL/glew.h>
 #include <vector>
 #include <glm/glm.hpp>
-#include "shader/shader.h"
-#include "shader/program.h"
+#include "../shader/shader.h"
+#include "../shader/program.h"
 
 typedef struct {
     GLuint verticesVbo;

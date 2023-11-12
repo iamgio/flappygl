@@ -1,7 +1,7 @@
 #ifndef FLAPPYGL_SCENE_SHAPES_H
 #define FLAPPYGL_SCENE_SHAPES_H
 
-#include "../shape.h"
+#include "shape.h"
 #include "scene.h"
 
 Shape createBackgroundDetailsShape();

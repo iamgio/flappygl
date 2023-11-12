@@ -24,8 +24,8 @@ add_executable(${PROJECT_NAME} main.cpp
         shader/shader.h shader/shader.cpp
         shader/program.h shader/program.cpp
         shader/programs.cpp shader/programs.h
-        shapes.h shapes.cpp
-        shape.h
+        scene/shapes.h scene/shapes.cpp
+        scene/shape.h scene/shape.cpp
         gl.h gl.cpp
         window.h window.cpp
         glm.cpp glm.h
@@ -44,7 +44,6 @@ add_executable(${PROJECT_NAME} main.cpp
         game/pipe_pair.h
         game/pipe_pair.cpp
         random.h
-        shape.cpp
         game/scoreincreaser.h
         lib/gltext.h
         text/text.cpp

@@ -2,7 +2,7 @@
 #define FLAPPYGL_GLM_H
 
 #include <glm/glm.hpp>
-#include "shape.h"
+#include "scene/shape.h"
 
 bool isVecEmpty(glm::vec3 vec);
 

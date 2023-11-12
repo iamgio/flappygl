@@ -1,7 +1,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "scene.h"
 #include "../gl.h"
-#include "../shapes.h"
 #include "../settings.h"
 #include "../glm.h"
 

@@ -1,11 +1,9 @@
 #include <iostream>
-#include "../shape.h"
 #include "scene.h"
+#include "shapes.h"
 #include "../game/ground.h"
-#include "../shapes.h"
 #include "../game/pipe.h"
 #include "../game/bird.h"
-#include "../game/background_details.h"
 #include "../hermite.h"
 
 #define GROUND_COLOR_TOP 0.5f, 0.7f, 0.3f

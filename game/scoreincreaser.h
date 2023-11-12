@@ -4,7 +4,6 @@
 
 #include "gameobject.h"
 #include "pipe.h"
-#include "../shapes.h"
 
 #define TYPE_SCORE_INCREASER 3
 
