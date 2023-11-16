@@ -55,9 +55,6 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // GLText initialization
-    //gltInit();
-
     // Get version info
     logVersionInfo();
 
@@ -72,7 +69,6 @@ int main(int argc, char **argv) {
     Shader fragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
     Shader groundFragmentShader = loadShader("../shaders/fragmentGround.glsl", GL_FRAGMENT_SHADER);
     Shader mountainsFragmentShader = loadShader("../shaders/fragmentMountains.glsl", GL_FRAGMENT_SHADER);
-    Shader birdFragmentShader = loadShader("../shaders/fragment.glsl", GL_FRAGMENT_SHADER);
 
     Program defaultProgram = createProgram(&vertexShader, &fragmentShader);
     Program groundProgram = createProgram(&vertexShader, &groundFragmentShader);
@@ -98,7 +94,15 @@ int main(int argc, char **argv) {
     // Create score text
     Text *scoreText = new Text();
 
+    const double maxPeriod = 1 / MAX_FPS;
+    double lastTime = 0;
+
     do {
+        // FPS locking/capping
+        double time = glfwGetTime();
+        if (time - lastTime <= maxPeriod) continue;
+        lastTime = time;
+
         // Apply shaders
         defaultProgram.use();
 
